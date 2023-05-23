@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  css: [
+    "@/assets/fonts/fonts.css",
+    "@/assets/sass/main.sass"
+  ],
+  
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/prismic',
@@ -8,17 +13,12 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxt/image-edge',
     'nuxt-simple-sitemap',
-    'nuxt-lodash',
+    // 'nuxt-lodash',
     // 'nuxt-seo-kit',
     '@morev/vue-transitions/nuxt',
     'nuxt-og-image',
     // 'nuxt-swiper'
-    'nuxt-purgecss',
-  ],
-  
-  css: [
-    "@/assets/fonts/fonts.css",
-    "@/assets/sass/main.sass"
+    // 'nuxt-purgecss',
   ],
   
   image: {

@@ -13,7 +13,7 @@
     "@nuxt/devtools": "^0.5.0",
     "@nuxt/image-edge": "^1.0.0-28020728.5df24eb",
     "@nuxtjs/prismic": "^3.0.0-rc.4",
-    "@nuxtjs/tailwindcss": "^6.6.7",
+    "@nuxtjs/tailwindcss": "^6.7.0",
     "@types/node": "^18",
     "@volar/vue-language-plugin-pug": "^1.6.1",
     "animejs": "^3.2.1",

@@ -21,24 +21,13 @@ module.exports = {
     fontSize: {
       'xl': '1.375rem',
       '2xl': '1.625rem'
-      // font-size: 1.625rem
-    //   // 'meta1': ['12px', { lineHeight: '140%' }],
-    //   // 'sidebar': ['14px', { lineHeight: '200%' }],
-    //   // 'meta2': ['14px', { lineHeight: '130%' }],
-    //   // 'menu': ['16px', { lineHeight: '125%' }],
-    //   // 'body': ['16px', { lineHeight: '130%' }],
-    //   // 'body-lg': ['18px', { lineHeight: '130%' }],
-    //   // 'subtitle': ['20px', { lineHeight: '120%', letterSpacing: '-0.02em' }],
-    //   // 'h3': ['22px', { lineHeight: '100%', letterSpacing: '-0.02em' }],
-    //   // 'h2-sm': ['26px', { lineHeight: '140%', letterSpacing: '-0.02em' }],
-    //   // 'h2': ['32px', { lineHeight: '100%', letterSpacing: '-0.02em' }],
-    //   // 'h1': ['51px', { lineHeight: '100%', letterSpacing: '-0.02em' }],
+      // 'h1': ['51px', { lineHeight: '100%', letterSpacing: '-0.02em' }],
     },
     
     height: theme => ({
       auto: 'auto',
       ...theme('spacing'),
-      full: '100%',
+      full: '100vh',
       screen: '100vh',
       '1x2': '50%',
     }),
@@ -76,15 +65,28 @@ module.exports = {
       'grid_20': 'calc(100% + 4rem)',
     }),
   },
+  // content: [
+  //   `/components/**/*.{vue,js,ts}`,
+  //   `/layouts/**/*.vue`,
+  //   `/pages/**/*.vue`,
+  //   `/composables/**/*.{js,ts}`,
+  //   `/plugins/**/*.{js,ts}`,
+  //   `/App.{js,ts,vue}`,
+  //   `/app.{js,ts,vue}`,
+  //   `/Error.{js,ts,vue}`,
+  //   `/error.{js,ts,vue}`
+  // ]
   content: [
     `/components/**/*.{vue,js,ts}`,
     `/layouts/**/*.vue`,
     `/pages/**/*.vue`,
     `/composables/**/*.{js,ts}`,
     `/plugins/**/*.{js,ts}`,
+    `/utils/**/*.{js,ts}`,
     `/App.{js,ts,vue}`,
     `/app.{js,ts,vue}`,
     `/Error.{js,ts,vue}`,
-    `/error.{js,ts,vue}`
+    `/error.{js,ts,vue}`,
+    `/app.config.{js,ts}`
   ]
 }
