@@ -1,0 +1,35 @@
+/* 
+font defintitions
+*/
+
+@font-face {
+  font-family: 'A';
+  src: url('./Tokyto-Medium-A.woff2') format('woff2'),
+       url('./Tokyto-Medium-A.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'B';
+  src: url('./Tokyto-Medium-B.woff2') format('woff2'),
+       url('./Tokyto-Medium-B.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @font-face {
+  font-family: 'Tokyto-C';
+  src: url('./Tokyto-Medium-C.woff2') format('woff2'),
+       url('./Tokyto-Medium-C.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: 'D';
+  src: url('./subset-Diatype-Bold.woff2') format('woff2'),
+       url('./subset-Diatype-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}

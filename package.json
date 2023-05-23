@@ -1,0 +1,38 @@
+{
+  "name": "norberg-2023",
+  "author": "Olle Holmberg",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^0.5.0",
+    "@nuxt/image-edge": "^1.0.0-28020728.5df24eb",
+    "@nuxtjs/prismic": "^3.0.0-rc.4",
+    "@nuxtjs/tailwindcss": "^6.6.7",
+    "@types/node": "^18",
+    "@volar/vue-language-plugin-pug": "^1.6.1",
+    "animejs": "^3.2.1",
+    "date-fns": "^2.29.3",
+    "nuxt": "^3.4.2",
+    "nuxt-lodash": "^2.4.1",
+    "nuxt-og-image": "^1.5.9",
+    "nuxt-purgecss": "^2.0.0",
+    "nuxt-seo-kit": "^1.3.7",
+    "sass": "^1.62.1",
+    "vite-plugin-pug": "^0.3.2"
+  },
+  "dependencies": {
+    "@morev/vue-transitions": "^2.3.6",
+    "@nuxtjs/device": "^3.1.0",
+    "@nuxtjs/robots": "^3.0.0",
+    "@pinia/nuxt": "^0.4.9",
+    "nuxt-simple-sitemap": "^2.4.13",
+    "nuxt-swiper": "^1.1.0",
+    "pinia": "^2.0.35"
+  }
+}
