@@ -13,8 +13,8 @@ const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage
     
     .video.absolute.flex.flex-col.justify-center.items-center.top-0
       .mask
-        .container
-          iframe(src='https://player.vimeo.com/video/823287528?autoplay=1&loop=1&muted=1&background=0&color=000000&byline=0&controls=0&dnt=1&pip=0&inline=1&title=0&transparent=1' width='858' height='574' frameborder='0' allow='autoplay;')     
+        .container(v-if='doc.data.embed_vimeo_id')
+          iframe(:src="'https://player.vimeo.com/video/'+ doc.data.embed_vimeo_id +'?autoplay=1&loop=1&muted=1&background=0&color=000000&byline=0&controls=0&dnt=1&pip=0&inline=1&title=0&transparent=1'" width='858' height='574' frameborder='0' allow='autoplay;')     
     .bottom
       Marquee
       .more.flex.justify-center.items-center.flex-col.pt-8
@@ -40,7 +40,7 @@ const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage
 <style lang="sass" scoped>
 .video
   .container
-    transform: scale(2.5)
+    transform: scale(1.9)
     border: 1px white solid
     width: 858px
     height: 574px
