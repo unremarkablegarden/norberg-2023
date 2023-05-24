@@ -16,7 +16,7 @@
     .right.w-8x12
       .title.text-4xl.mb-4
         prismic-rich-text(:field="data.doc.headline")
-      .body.content.mb-8
+      .body.content.mb-8.font-d.text-lg
         prismic-rich-text(:field="data.doc.body")
       
 </template>
