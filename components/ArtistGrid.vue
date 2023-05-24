@@ -10,7 +10,7 @@
               .image.shadow-marijn
                 prismic-image(
                   :field="artist.data?.image"
-                  :imgix-params="{ w: 600, h: 600, fit: 'facearea', facepad: 10, faceindex: 1 }"
+                  :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
                 ).img
                 //- .no-hover
                 //-   prismic-image(
