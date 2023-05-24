@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-definePageMeta({ layout: "plain" })
+// definePageMeta({ layout: "plain" })
 </script>
 
 <style lang="sass">

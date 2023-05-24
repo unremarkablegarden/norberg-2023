@@ -1,6 +1,7 @@
 <template lang="pug">
-#error
-  h1.font-bold.text-b.text-2xl Error
+#error.px-10.mt-20
+  .title.text-6xl.mb-8
+    UiTitle(size='xl') Error
   pre {{ error }}
 </template>
 

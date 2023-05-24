@@ -6,12 +6,13 @@
         UiTitle(size='xl') {{ $prismic.asText(data.headline) }}
         //- prismic-rich-text(:field="data.headline")
     .right.close
-      nuxt-link(to="/artists").text-4xl.font-b.rotate-180.hover_text-mediumpurple X
+      .animate-spin
+        nuxt-link(to="/artists").text-4xl.font-b.rotate-180.hover_text-mediumpurple X
       
   .flex
     .left.mr-6.w-8x12.pr-16
       .flex.mb-16.normal-case
-        UiButton(type="trans" size="xl") Program info coming later
+        UiButton(type="trans" size="xl") Program info later
         //- UiButton(type="trans" size="xl") Date
         //- UiButton(type="trans" size="xl") Time
         //- UiButton(type="trans" size="xl") Tag

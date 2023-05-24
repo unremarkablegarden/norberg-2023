@@ -19,7 +19,7 @@ const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage
       Marquee
       .more.flex.justify-center.items-center.flex-col.pt-8
         //- UiButton(type='orange-black') Explore all artists
-        nuxt-link(to='/artists').scale-200
+        nuxt-link(to='/lineup').scale-200
           img(src='/gfx/button_explore-all-artists.svg')
         span(style='font-size: 32px').pt-3 ↓
   
