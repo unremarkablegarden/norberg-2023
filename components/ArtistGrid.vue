@@ -1,7 +1,6 @@
 <template lang="pug">
 #artist-grid
   .wrapper.px-5
-    //- .grid.grid-cols-4.gap-4
     .flex.flex-wrap
       .artist(v-for="(artist, i) in data.artists").w-3x12
         .p-2.pb-4
@@ -12,16 +11,6 @@
                   :field="artist.data?.image"
                   :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
                 ).img
-                //- .no-hover
-                //-   prismic-image(
-                //-     :field="artist.data?.image"
-                //-     :imgix-params="{ w: 600, h: 600, fit: 'facearea', facepad: 10, faceindex: 1 }"
-                //-   )
-                //- .hover
-                //-   prismic-image(
-                //-     :field="artist.data?.image"
-                //-     :imgix-params="{ w: 600, h: 600, fit: 'facearea', facepad: 3, faceindex: 1 }"
-                //-   )
                   
               .text.flex.justify-between.mt-2
                 .name

@@ -1,21 +1,15 @@
 <script setup>
 const { client } = usePrismic()
-// const { data: home } = await useAsyncData('homepage', () => client.getByUID('page', 'home'))
-const data = reactive({})
-const { data: docs } = await useAsyncData('docs', () => client.getByType('homepage'))
-
-watchEffect(() => {
-  data.doc = docs.value?.results?.[0]?.data
-})
+const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage'))
 </script>
 
 
 <template lang="pug">
-#index.absolute(v-if='data && data.doc')
+#index.absolute(v-if='doc && doc.data')
   
   .splash
     .text.text-2xl.flex.flex-col.justify-center.items-center.px-10
-      prismic-rich-text(:field="data.doc.body")
+      prismic-rich-text(:field="doc.data.body")
     
     .video.absolute.flex.flex-col.justify-center.items-center.top-0
       .mask
