@@ -26,8 +26,9 @@
               .text.flex.justify-between.mt-2
                 .name
                   prismic-rich-text(:field="artist.data?.headline")
-                .type
-                  UiButton(type='trans' size='sm') Tag
+                .type(v-if="artist.data?.type")
+                  UiButton(type='trans' size='sm') 
+                    | {{ artist.data?.type }}
       
       .artist.w-3x12
         .p-2.pb-4
