@@ -38,8 +38,3 @@
 <script setup>
 const props = defineProps({ data: Object })
 </script>
-
-<style lang="sass">
-#artists .artist .right.close
-  display: none
-</style>
