@@ -9,7 +9,7 @@
 const props = defineProps({
   title: {
     type: String,
-    default: 'Norbergfestival 2023'
+    default: 'Norbergfestival'
   },
   description: {
     type: String,
