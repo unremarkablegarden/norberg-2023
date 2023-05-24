@@ -1,19 +1,17 @@
 <script setup>
 const { client } = usePrismic()
 const data = reactive({})
-const { data: docs } = await useAsyncData('docs', () => client.getByType('homepage'))
+
+const { data: logo } = await useAsyncData('logo', () => client.getByType('homepage'))
 
 watchEffect(() => {
-  data.doc = docs.value?.results?.[0]?.data
+  data.logo = logo.value?.results?.[0]?.data?.logo
 })
 </script>
 
 
 <template lang="pug">
 #logo.flex.justify-center.pt-4
-  nuxt-img(:src="data.doc.logo.url" :alt="data.doc.logo.alt" width="1000" class='lg_w-[370px]').w-full
+  nuxt-link(to="/")
+    nuxt-img(:src="data?.logo?.url" :alt="data?.logo?.alt" width="1000" class='lg_w-[370px]').w-full
 </template>
-
-<style lang="sass" scoped>
-// .lg_w-logo
-</style>

@@ -33,3 +33,19 @@ font defintitions
   font-weight: bold;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'D';
+  src: url('./subset-Diatype-Medium110.woff2') format('woff2'),
+       url('./subset-Diatype-Medium110.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'D';
+  src: url('./subset-Diatype-Medium110Italic.woff2') format('woff2'),
+       url('./subset-Diatype-Medium110Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}

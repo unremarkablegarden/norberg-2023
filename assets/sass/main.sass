@@ -1,21 +1,53 @@
 // main norberg 2023
+
+$white: #FFFEF9
+$offwhite: #F7F7F0
+$black: #191F16
+$darkgrey: #7E7E74
+$lightgrey: #CDCDCD
+$primary: #FF5701
+$purple: #AC85E5
+$mediumpurple: #9886E5
+$darkpurple: #7F32E6
+$green: #30BD55
+$darkgreen: #1F8C4F
+$orange: #FF5701
+
+html, body
+  background-color: $orange
   
 body
-  font-family: 'A', sans-serif  
+  font-family: "A", sans-serif  
   
 .font-a
-  font-family: 'A', sans-serif
+  font-family: "A", sans-serif
 .font-b
-  font-family: 'B', sans-serif
+  font-family: "B", sans-serif
 // .font-c
-//   font-family: 'C', sans-serif
+//   font-family: "C", sans-serif
 .font-d
-  font-family: 'D', sans-serif
+  font-family: "D", sans-serif
   
-
+.content 
+  p
+    margin-bottom: 1rem
+  iframe
+    margin-bottom: 2rem
+  .image-slice
+    margin-bottom: 2rem
+    
+.shadow-marijn
+  transition: all 0.1s ease-in
+  box-shadow: 0px 0px 10px 2px #BA9A8F
+.shadow-marijn:hover
+  transition: all 0.1s ease-out
+  box-shadow: 0px 0px 20px 10px #CAAA9F
+  
+p a:hover
+  color: $darkpurple
   
 xmp, pre
-  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+  font-family: "Fira Code"
   font-weight: normal
   text-transform: none
   background: #e5e7eb
@@ -30,6 +62,8 @@ xmp, pre
   max-width: 100%
   word-wrap: break-word
   white-space: pre-wrap
+  max-height: 66vh
+  overflow-y: auto
   &.debug
     position: fixed
     top: 0

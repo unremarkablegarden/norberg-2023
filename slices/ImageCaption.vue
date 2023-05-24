@@ -1,46 +1,34 @@
 <template lang="pug">
-div
-  //- xmp {{ slice }}
-  template(v-if="size === 'image-full-width'")
-    .blog-header.single(:style="{ 'background-image': 'url(' + img.url + ')'}")
-      template(v-if="$prismic.asText(caption) != ''")
-        .wrapper
-          h1 {{ $prismic.asText(caption) }}
-  template(v-else='')
-    .post-part.single.container
-      p.block-img(:class='size')
-        prismic-image(:field='img')
-      template(v-if="$prismic.asText(caption) != ''")
-        p
-          span.image-label {{ $prismic.asText(caption) }}
+.image-slice
+  template(v-if="slice.slice_label === 'image-full-width'")
+    .blog-header.single(:style="{ 'background-image': 'url(' + slice.primary.image.url + ')'}")
+      prismic-rich-text(:field="slice.primary.caption")
+      
+  template(v-else)
+    .inner
+      .img(:class='slice.slice_label')
+        prismic-image(:field='slice.primary.image')
+      .text-right.pt-3.font-b
+        prismic-rich-text(:field='slice.primary.caption')
 </template>
 
 
-<script>
-export default {
-  props: ['slice'],
-  data: function() {
-    return {
-      img: '',
-      caption: '',
-      size: '',
-    }
+<script setup>
+const props = defineProps({
+  slice: {
+    type: Object,
+    required: true,
   },
-  name: 'image-caption-slice',
-  created () {
-    this.img = this.slice.primary.image
-    this.caption = this.slice.primary.caption
-    this.size = this.slice.slice_label
-  }
-}
+})
 </script>
+
 
 <style lang="sass" scoped>
 .blog-header
   height: 400px
   position: relative
-  font-family: 'Lato', sans-serif
-  font-weight: 400
+  // font-family: 'Lato', sans-serif
+  // font-weight: 400
   background-color: white
   background-size: cover
   color: white
@@ -78,8 +66,8 @@ img
   width: 100%
   height: auto
 
-.block-img
-  margin-bottom: 24px
+// .block-img
+  // margin-bottom: 24px
 
 .image-label
   display: block
@@ -98,6 +86,6 @@ img
 @media screen and (min-width: 768px)
   // Blog post images
   .block-img.emphasized
-    width: 130%
-    margin: 0 -15% 2rem -15%
+    // width: 130%
+    // margin: 0 -15% 2rem -15%
 </style>

@@ -1,5 +1,6 @@
 <template lang="pug">
-#layout-default.bg-primary.min-h-screen.relative(style="height: 200vh")
+#layout-default.bg-primary.min-h-screen.relative
+  //- (style="height: 200vh")
   
   header.px-10.bg-black.z-30.relative
     SeoMeta
@@ -13,7 +14,7 @@
     slot
   
   //- footer.px-10
-    LayoutSiteFooter      
+    LayoutSiteFooter
     
 </template>
 
