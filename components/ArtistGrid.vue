@@ -19,7 +19,7 @@
                   UiButton(type='trans' size='sm') 
                     | {{ artist.data?.type }}
       
-      .artist.w-3x12
+      .artist.w-3x12.see-all-artists
         .p-2.pb-4
           .flex.justify-center.items-center.square
             nuxt-link(to='/artists')
@@ -29,12 +29,32 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  sort: {
+    type: String,
+    default: 'date'
+  }
+})
+
 const { client } = usePrismic()
 const data = reactive({})
-const { data: artists } = await useAsyncData('artists', () => client.getByType('artist', { pageSize: 100 }))
+
+const { data: artists } = await useAsyncData('artists', () => client.getByType('artist', { 
+  pageSize: 100,
+}))
 
 watchEffect(() => {
   data.artists = artists.value?.results
+  
+  if (props.sort === 'alpha') {
+    data.artists = data.artists.sort((a, b) => {
+      const aName = a.data?.headline?.[0]?.text?.toLowerCase()
+      const bName = b.data?.headline?.[0]?.text?.toLowerCase()
+      if (aName < bName) return -1
+      if (aName > bName) return 1
+      return 0
+    })
+  }
 })
 </script>
 
