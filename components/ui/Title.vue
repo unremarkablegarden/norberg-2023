@@ -1,5 +1,5 @@
 <template lang="pug">
-h1(:class='{ "text-2xl h-10": size == "sm", "text-6xl h-18": size == "xl" }').title.flex
+h1(:class='{ "h-10": size == "sm", "h-18": size == "xl" }').title.flex
   .decoration.left
   .label.bg-black.text-green.pb-1
     slot

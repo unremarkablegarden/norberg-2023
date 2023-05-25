@@ -3,7 +3,8 @@ Head
   Title {{ data.doc?.headline?.[0]?.text }} at {{ config.title }} {{ config.year }}
   
 #artist.pb-20
-  Artist(:data='data.doc')
+  .mx-auto.w-full.lg_w-10x12.xl_w-8x12
+    Artist(:data='data.doc')
   Marquee(type='full')
 </template>
 

@@ -1,19 +1,27 @@
 <template lang="pug">
-#menu.bg-primary2
-  .inner.flex.justify-between.text-xl.pt-2
+#menu.bg-primary2(v-if='data && data.menu')
+  //- pre {{ showMenu }}
+  .mobile-toggle(:class="{ 'hidden': showMenu, 'block md_hidden': !showMenu }").flex.justify-end.w-full.text-xl.mt-2.-mb-4.relative.z-50
+    button(@click='showMenu = !showMenu') + menu
   
+  .inner(:class="{ 'hidden md_block': !showMenu, 'block': showMenu }" style="background: #00000050").flex.justify-between.text-4xl.md_text-xl.pt-2.fixed.md_relative.top-0.left-0.right-0.bottom-0.z-40.backdrop-blur-md.pt-16.md_pt-0
+    
     .left(:class="{ 'w-full': !data.more_count, 'w-10x12': data.more_count }")
-      nav(v-if='data && data.menu')#main.flex.justify-between.w-full.flex-wrap
-        .item(v-for='(item, i) in data.menu.main' :key='i', :class='{ disabled: ! item.enable }').whitespace-nowrap
+      nav(v-if='data && data.menu')#main.flex.md_justify-between.w-full.flex-wrap
+        
+        .item(v-for='(item, i) in data.menu.main' :key='i' :class='{ disabled: ! item.enable }' @click='showMenu = false').whitespace-nowrap.w-full.md_w-auto.text-center.md_text-left
+          
           template(v-if='item?.link?.link_type === "Web"')
             a(:href='parseLink(item.link.url)', v-if='item.enable').hover_text-green {{ item.title }}
           template(v-else)
             prismic-link(:field='item.link', v-if='item.enable').hover_text-green {{ item.title }}
-          
+        
+        .item.close.block.md_hidden.whitespace-nowrap.w-full.md_w-auto.text-center.md_text-left
+          button(@click='showMenu = false') close
     
     .right.w-2x12.text-right(v-if='data.more_count')
       nav#more
-        button(@click='data.open_more != data.open_more').hover_text-green
+        button(@click='data.open_more = !data.open_more').hover_text-green
           .flex
             .text-mediumpurple.pr-2 ++
             span more
@@ -31,6 +39,8 @@
 <script setup>
 const { client } = usePrismic()
 const data = reactive({})
+// const showMenu = ref(true)
+const showMenu = ref(false)
 const { data: menu } = await useAsyncData('menu', () => client.getByType('menu'))
 
 watchEffect(() => {
@@ -54,7 +64,7 @@ const parseLink = (link) => {
 $orange: #FF5701
 
 #menu
-  a, span  
+  a, span, button
     text-shadow: -1px -1px 0 $orange, 1px -1px 0 $orange, -1px 1px 0 $orange, 1px 1px 0 $orange
 
 #menu #main .item
@@ -70,4 +80,8 @@ $orange: #FF5701
     padding-left: 0.3rem
   &.disabled
     opacity: 0.4
+#menu #main .item.close
+  margin-top: 3rem
+  &:before, &:after
+    content: ' ' !important
 </style>

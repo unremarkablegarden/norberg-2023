@@ -2,7 +2,7 @@
 .artist
   .flex.justify-between.mb-5
     .left.w-11x12.lg_w-7x12
-      .title.text-6xl
+      .title.text-3xl.md_text-3.lg_text-5xl.xl_text-6xl
         nuxt-link(v-if='type === "lineup"' :to="'/artist/' + slug")
           UiTitle(size='xl') {{ $prismic.asText(data.headline) }}
         template(v-else)
@@ -12,20 +12,19 @@
       .animate-spin
         nuxt-link(to="/artists").text-4xl.font-b.rotate-180.hover_text-mediumpurple X
       
-  .flex
-    .left.mr-6.w-8x12.pr-16
-      .flex.mb-16.normal-case
+  .flex.flex-wrap.md_flex-nowrap
+    .left.lg_mr-6.w-full.md_w-6x12.lg_w-8x12.md_pr-8.lg_pr-16
+      .flex.mb-8.lg_mb-16.normal-case
         UiButton(type="trans" size="xl") Program info later
         //- UiButton(type="trans" size="xl") Date
         //- UiButton(type="trans" size="xl") Time
         //- UiButton(type="trans" size="xl") Tag
         //- UiButton(type="trans" size="xl") Venue
       
-    
-      .body.content.mb-8.font-d.text-xl
+      .body.content.mb-8.font-d.text-base.md_text-lg.lg_text-xl
         prismic-rich-text(:field="data.body")
       
-    .right.w-4x12
+    .right.w-full.md_w-6x12.lg_w-4x12
       .image.w-full.shadow-marijn-big
         prismic-image(
           :field="data.image"
@@ -52,22 +51,46 @@ const props = defineProps({
 <style lang="scss">
 ._16x9, .youtube, .vimeo {
   iframe, object, embed {
-    // mobile
-    @media (max-width: 1023px) {
-      width: calc(100vw - 5rem);
-      height: calc( ((100vw - 5rem) * (9/16)) ); 
-    }
-    // desktop
-    @media (min-width: 1024px) {
-      width: calc((100vw - 5rem) * (1/3));
-      height: calc( ((100vw - 5rem) * (1/3)) * (9/16) );
-    }
+    // breakpoints:
+    // md	768px	@media (min-width: 768px) { ... }
+    // lg	1024px	@media (min-width: 1024px) { ... }
+    // xl	1280px	@media (min-width: 1280px) { ... }
+    // 2xl	1536px	@media (min-width: 1536px) { ... }
     
+    // container:
+    // .w-full .md_w-12x12 .lg_w-11x12 .xl_w-10x12 .2xl_w-8x12
+    
+    // mobile
+    @media (max-width: 767px) {
+      width: 100%;
+      height: calc((100vw - 3rem) * (9/16));
+    }
+    // tablet
+    @media (min-width: 768px) and (max-width: 1023px) {
+      width: calc((100vw - 2rem) / 2);
+      height: calc( (((100vw - 2rem) / 2) * (9/16)) ); 
+    }
+    // lg
+    @media (min-width: 1024px) {
+      width: calc((100vw - 10rem) * (1/3));
+      height: calc( ((100vw - 10rem) * (1/3)) * (9/16) );
+    }
+    // xl
+    @media (min-width: 1280px) {
+      width: calc((100vw - 10rem) * (1/3) * (11/12));
+      height: calc( ((100vw - 10rem) * (1/3)) * (11/12) * (9/16) );
+    }
+    // 2xl
+    @media (min-width: 1536px) {
+      width: calc((100vw - 10rem) * (1/3) * (8/12));
+      height: calc( ((100vw - 10rem) * (1/3)) * (8/12) * (9/16) );
+    }
   }
 }
 .soundcloud {
   iframe, object, embed {
     width: 100%;
+    // height: calc((100vw - 3rem) * (9/16));
   }
 }
 </style>

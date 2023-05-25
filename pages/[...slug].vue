@@ -6,7 +6,7 @@ SeoMeta(:doc='doc' :config='config')
 
 #page(v-if='!doc || !doc.data')
   #error.px-10.mt-20.flex.flex-col.items-center
-    .title.text-6xl.mb-8
+    .title.mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.flex.align-center.justify-center.text-5xl.lg_text-6xl
       UiTitle(size='xl') 404
     .text-4xl
       p Page not found
@@ -14,7 +14,7 @@ SeoMeta(:doc='doc' :config='config')
 #page(v-else).content.mb-32.w-full
   //- .lg_w-3x5.lg_mx-auto
   
-  #title(v-if='doc?.data?.title').mb-24.mt-16.flex.align-center.justify-center.text-6xl.w-full.lg_w-8x12.lg_mx-auto
+  #title(v-if='doc?.data?.title').mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.flex.align-center.justify-center.text-4xl.md_text-5xl.lg_text-6xl
     UiPageTitle(:width='pageWidth')
       div(v-html='$prismic.asText(doc?.data?.title)')
   

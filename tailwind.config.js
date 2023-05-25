@@ -17,6 +17,7 @@ module.exports = {
       'green': '#30BC55',
       'darkgreen': '#1F8C4F',
       'orange': '#FF5701',
+      'darkorange': '#a63F01',
       'transparent': 'transparent',
     },
     darkMode: 'media',

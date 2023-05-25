@@ -1,7 +1,7 @@
 <template lang="pug">
 #logo.flex.justify-center.pt-4.pb-4
   nuxt-link(to="/")
-    nuxt-img(:src="data?.logo?.url" :alt="data?.logo?.alt" width="1000" class='lg_w-[370px]').w-full
+    nuxt-img(:src="data?.logo?.url" :alt="data?.logo?.alt" width="1000" class='w-[370px]')
 </template>
   
 <script setup>

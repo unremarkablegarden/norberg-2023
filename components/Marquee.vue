@@ -1,10 +1,10 @@
 <template lang="pug">
 #marquee(:class='{ "fixed left-0 bottom-16 w-full z-50": type === "full", "": type === "small" }')
   Vue3Marquee
-    .artist(v-for='(artist, i) in data.artists').bg-black.text-green.text-2xl.whitespace-nowrap.mr-3
+    .artist(v-for='(artist, i) in data.artists').bg-black.text-green.text-xl.md_text-2xl.whitespace-nowrap.mr-3
       nuxt-link(:to="'/artist/' + artist.slug").hover_text-purple {{ artist.name }}
-  Vue3Marquee(direction="reverse", v-if='type !== "full"').mt-3
-    .artist(v-for='(artist, i) in data.artists').bg-black.text-green.text-2xl.whitespace-nowrap.mr-3
+  Vue3Marquee(direction="reverse", v-if='type !== "full"').mt-2.md_mt-3
+    .artist(v-for='(artist, i) in data.artists').bg-black.text-green.text-xl.md_text-2xl.whitespace-nowrap.mr-3
       nuxt-link(:to="'/artist/' + artist.slug").hover_text-purple {{ artist.name }}
 </template>
 

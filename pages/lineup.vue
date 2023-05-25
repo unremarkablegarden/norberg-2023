@@ -2,15 +2,13 @@
 Head
   Title Line-up at {{ config.title }} {{ config.year }}
 
-#lineup
-  //- p.text-center.text-2xl.mt-10.mb-20.font-d.opacity-40
-    //- span.underline Read the full line-up below
-    //- | &nbsp; :)
-  .title.mb-24.mt-16.flex.align-center.justify-center.text-6xl
+#lineup.mx-auto.w-full.md_w-12x12.lg_w-11x12.xl_w-10x12.2xl_w-8x12
+
+  .title.mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.flex.align-center.justify-center.text-4xl.md_text-5xl.lg_text-6xl
     UiPageTitle(:width='pageWidth')
       | Line-up
   .artist(v-for="(artist, i) in data?.docs" :key='i', v-if='data && data.docs')
-    Artist(:data='artist.data' :slug="artist.slugs?.[0]" type="lineup" ).mb-24
+    Artist(:data='artist.data' :slug="artist.slugs?.[0]" type="lineup" ).mb-10.lg_mb-24
 </template>
 
 
