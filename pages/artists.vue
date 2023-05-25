@@ -1,10 +1,16 @@
 <template lang="pug">
+Head
+  Title Artists at {{ config.title }} {{ config.year }}
+
 #artists.mb-20
+  .title.mb-24.mt-16.flex.align-center.justify-center.text-6xl
+    UiPageTitle Artists
   ArtistGrid(sort="alpha")
 </template>
 
 <script setup>
 // definePageMeta({ layout: "plain" })
+const config = useAppConfig()
 </script>
 
 <style lang="sass">

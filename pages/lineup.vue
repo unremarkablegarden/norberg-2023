@@ -1,9 +1,13 @@
 <template lang="pug">
+Head
+  Title Line-up at {{ config.title }} {{ config.year }}
+
 #lineup
-  p.text-center.text-2xl.mt-10.mb-20.font-d.opacity-40
+  //- p.text-center.text-2xl.mt-10.mb-20.font-d.opacity-40
     //- span.underline Read the full line-up below
     //- | &nbsp; :)
-  
+  .title.mb-24.mt-16.flex.align-center.justify-center.text-6xl
+    UiPageTitle Line-up
   .artist(v-for="(artist, i) in data.docs" :key='i')
     Artist(:data='artist.data' :slug="artist.slugs?.[0]" type="lineup" ).mb-24
 </template>
@@ -11,7 +15,7 @@
 
 <script setup>
 // definePageMeta({ layout: "plain" })
-
+const config = useAppConfig()
 const { client } = usePrismic()
 const data = reactive({})
 

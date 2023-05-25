@@ -3,8 +3,8 @@
   //- .min-h-screen
   //- (style="height: 200vh")
   
-  header.px-10.bg-black.z-30.relative
-    SeoMeta
+  //- header.px-10.bg-black.z-30.relative
+    //- SeoMeta
     //- LayoutSiteHeader
   
   //- Menu.px-10.sticky.top-0.z-50

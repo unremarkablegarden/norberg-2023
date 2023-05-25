@@ -1,10 +1,14 @@
 <script setup>
+const config = useAppConfig()
 const { client } = usePrismic()
 const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage'))
 </script>
 
 
 <template lang="pug">
+Head
+  Title {{ config.title }} {{ config.year }}
+
 #index(v-if='doc && doc.data')
   
   .splash
