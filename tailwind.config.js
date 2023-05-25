@@ -95,6 +95,7 @@ module.exports = {
     `/composables/**/*.{js,ts}`,
     `/plugins/**/*.{js,ts}`,
     `/utils/**/*.{js,ts}`,
+    `/slices/**/*.{js,ts}`,
     `/App.{js,ts,vue}`,
     `/app.{js,ts,vue}`,
     `/Error.{js,ts,vue}`,

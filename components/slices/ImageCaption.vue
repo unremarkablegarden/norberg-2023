@@ -6,7 +6,7 @@
       | {{ $prismic.asText(slice.primary.caption) }}
       
   template(v-else)
-    .inner
+    .inner.w-full2.w-1x2.lg_mx-auto
       .img(:class='slice.slice_label')
         prismic-image(:field='slice.primary.image')
       .text-right.pt-3.font-d.text-normal

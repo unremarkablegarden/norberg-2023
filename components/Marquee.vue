@@ -3,7 +3,7 @@
   Vue3Marquee
     .artist(v-for='(artist, i) in data.artists').bg-black.text-green.text-2xl.whitespace-nowrap.mr-3
       nuxt-link(:to="'/artist/' + artist.slug").hover_text-purple {{ artist.name }}
-  Vue3Marquee(direction="reverse").mt-3
+  Vue3Marquee(direction="reverse", v-if='type !== "full"').mt-3
     .artist(v-for='(artist, i) in data.artists').bg-black.text-green.text-2xl.whitespace-nowrap.mr-3
       nuxt-link(:to="'/artist/' + artist.slug").hover_text-purple {{ artist.name }}
 </template>
