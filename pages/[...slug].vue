@@ -6,14 +6,12 @@
     .text-4xl
       p Page not found
       
-#page(v-else).content.w-full.lg_w-3x5.lg_m-auto.pt-8
+#page(v-else).content.w-full.lg_w-3x5.lg_m-auto
   
-  .title(v-if='doc.data.title').mb-4.flex.align-center.justify-center
-    //- .text-darkpurple
-    //- prismic-rich-text(:field="doc.data.title")
-    UiTitle(size='xl' type='page')
+  .title(v-if='doc.data.title').mb-24.mt-16.flex.align-center.justify-center.text-6xl
+    UiPageTitle
       | {{ $prismic.asText(doc.data.title) }}
-    
+  
   .date.text-sm.mb-4(v-if='doc.data.date').font-d.text-center.opacity-50.text-xs
     | Last updated {{ format(new Date(doc.last_publication_date), 'd MMMM yyyy') }}
   
