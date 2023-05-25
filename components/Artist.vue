@@ -1,7 +1,7 @@
 <template lang="pug">
 .artist
   .flex.justify-between.mb-5
-    .left
+    .left.w-11x12.lg_w-7x12
       .title.text-6xl
         UiTitle(size='xl') {{ $prismic.asText(data.headline) }}
         //- prismic-rich-text(:field="data.headline")
@@ -31,11 +31,39 @@
       .embeds(v-if='data.embeds.length > 0').mt-8.mb-8
         .embed(v-for='(e, i) in data.embeds')
           template(v-if='e.embed?.provider_name')
-            strong {{ e.embed.provider_name }}
-            .iframe(v-html='e.embed.html').w-full
+            //- strong {{ e.embed.provider_name }}
+            .embed-container.shadow-marijn-big
+              .iframe(v-html='e.embed.html')
+            //- <div class='embed-container'><iframe src='https://www.youtube.com/embed/QILiHiTD3uc' frameborder='0' allowfullscreen></iframe></div>
 
 </template>
 
 <script setup>
 const props = defineProps({ data: Object })
 </script>
+
+<style>
+iframe
+.embed-container {
+  /* position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%; */
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; */
+  width: calc((100vw - 5rem) * (1/3));
+  height: calc( ((100vw - 5rem) * (1/3)) * (9/16) );
+  /* height: 0; */
+  /* padding-bottom: 56.25%; */
+}
+
+</style>

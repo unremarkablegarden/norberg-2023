@@ -1,14 +1,14 @@
 <template lang="pug">
-h1(:class='{ "text-2xl": style == "sm", "text-6xl h-10": style == "xl" }').title.flex
+h1(:class='{ "normal": !type == "page", "page-title": type == "page", "text-2xl": size == "sm", "text-6xl h-16": size == "xl" }').title.flex
   .decoration.left
-  .label.bg-black.text-green.pb-1
+  .label.pb-1(:class='{ "bg-black text-green": type == "normal", "text-purple": type == "page" }')
     slot
   .decoration.right
 </template>
 
 <script setup>
 const props = defineProps({
-  // type: String,
+  type: String,
   size: String,
   disabled: Boolean,
   onClick: Function,
@@ -20,7 +20,7 @@ const props = defineProps({
   // display: inline-block
 .bg-black
   background: #000 !important
-.decoration
+.normal .decoration
   background-size: 100% auto
   background-repeat: no-repeat
   display: inline-block
