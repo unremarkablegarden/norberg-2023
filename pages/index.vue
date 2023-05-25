@@ -5,10 +5,10 @@ const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage
 
 
 <template lang="pug">
-#index.absolute(v-if='doc && doc.data')
+#index(v-if='doc && doc.data')
   
   .splash
-    .text.text-2xl.flex.flex-col.justify-center.items-center.px-10
+    .text.absolute.text-2xl.flex.flex-col.justify-center.items-center.px-10
       prismic-rich-text(:field="doc.data.body")
     
     .video.absolute.flex.flex-col.justify-center.items-center.top-0
@@ -30,7 +30,7 @@ const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage
 
 
 <style lang="sass">
-#index .text
+.text
   line-height: 1.2
   a
     text-decoration: underline
@@ -51,10 +51,13 @@ const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage
     height: 574px
 
 #index
-  left: 0
-  top: 0
-  height: 100vh
+  .splash
+    // logo - menu - banner
+    height: calc(100vh - 190px - 38px - 36px)
   .text
+    left: 0
+    top: 0
+    height: 100vh
     background-image: url(/gfx/lines_textures3b.png)
     background-size: auto 95vh
     background-repeat: no-repeat
@@ -73,7 +76,7 @@ const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage
     
   .bottom
     position: absolute
-    bottom: 1rem
+    top: 78vh
     left: 0
     // border: 1px green solid
     width: 100vw

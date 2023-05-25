@@ -1,11 +1,11 @@
 <template lang="pug">
 #lineup
   p.text-center.text-2xl.mt-10.mb-20.font-d.opacity-40
-    span.underline Read the whole program below
-    | &nbsp; :)
+    //- span.underline Read the full line-up below
+    //- | &nbsp; :)
   
   .artist(v-for="(artist, i) in data.docs" :key='i')
-    Artist(:data='artist.data').mb-24
+    Artist(:data='artist.data' :slug="artist.slugs?.[0]" type="lineup" ).mb-24
 </template>
 
 

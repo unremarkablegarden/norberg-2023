@@ -1,8 +1,6 @@
 <template lang="pug">
-#layout-default.bg-primary.relative
-  //- min-h-screen.
-  //- (style="height: 200vh")
-  
+#layout-default.bg-primary.relative.border.border-red-500
+
   header.px-10.bg-black.z-30.relative
     SeoMeta
     LayoutSiteHeader

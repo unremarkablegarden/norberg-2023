@@ -3,8 +3,11 @@
   .flex.justify-between.mb-5
     .left.w-11x12.lg_w-7x12
       .title.text-6xl
-        UiTitle(size='xl') {{ $prismic.asText(data.headline) }}
-        //- prismic-rich-text(:field="data.headline")
+        nuxt-link(v-if='type === "lineup"' :to="'/artist/' + slug")
+          UiTitle(size='xl') {{ $prismic.asText(data.headline) }}
+        template(v-else)
+          UiTitle(size='xl') {{ $prismic.asText(data.headline) }}
+        
     .right.close
       .animate-spin
         nuxt-link(to="/artists").text-4xl.font-b.rotate-180.hover_text-mediumpurple X
@@ -32,38 +35,39 @@
         .embed(v-for='(e, i) in data.embeds')
           template(v-if='e.embed?.provider_name')
             //- strong {{ e.embed.provider_name }}
-            .embed-container.shadow-marijn-big
+            .embed-container.shadow-marijn-big(:class='e.embed.provider_name ? e.embed.provider_name.toLowerCase() : null')
+              //- pre {{ e.embed}}
               .iframe(v-html='e.embed.html')
-            //- <div class='embed-container'><iframe src='https://www.youtube.com/embed/QILiHiTD3uc' frameborder='0' allowfullscreen></iframe></div>
-
+            
 </template>
 
 <script setup>
-const props = defineProps({ data: Object })
+const props = defineProps({ 
+  data: Object,
+  slug: String,
+  type: String
+})
 </script>
 
-<style>
-iframe
-.embed-container {
-  /* position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  max-width: 100%; */
+<style lang="scss">
+._16x9, .youtube, .vimeo {
+  iframe, object, embed {
+    // mobile
+    @media (max-width: 1023px) {
+      width: calc(100vw - 5rem);
+      height: calc( ((100vw - 5rem) * (9/16)) ); 
+    }
+    // desktop
+    @media (min-width: 1024px) {
+      width: calc((100vw - 5rem) * (1/3));
+      height: calc( ((100vw - 5rem) * (1/3)) * (9/16) );
+    }
+    
+  }
 }
-
-.embed-container iframe,
-.embed-container object,
-.embed-container embed {
-  /* position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; */
-  width: calc((100vw - 5rem) * (1/3));
-  height: calc( ((100vw - 5rem) * (1/3)) * (9/16) );
-  /* height: 0; */
-  /* padding-bottom: 56.25%; */
+.soundcloud {
+  iframe, object, embed {
+    width: 100%;
+  }
 }
-
 </style>

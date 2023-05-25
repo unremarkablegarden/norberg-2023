@@ -2,20 +2,28 @@
 #menu.bg-primary2
   .inner.flex.justify-between.text-xl.pt-2
   
-    .left.w-10x12
-      nav(v-if='data && data.menu')#main.flex.justify-between.w-full
-        .item(v-for='(item, i) in data.menu.main' :key='i', :class='{ disabled: ! item.enable }')
-          a(:href='parseLink(item.link.url)', v-if='item.enable').hover_text-green {{ item.title }} 
-          span(v-else) {{ item.title }}
+    .left(:class="{ 'w-full': !data.more_count, 'w-10x12': data.more_count }")
+      nav(v-if='data && data.menu')#main.flex.justify-between.w-full.flex-wrap
+        .item(v-for='(item, i) in data.menu.main' :key='i', :class='{ disabled: ! item.enable }').whitespace-nowrap
+          template(v-if='item?.link?.link_type === "Web"')
+            a(:href='parseLink(item.link.url)', v-if='item.enable').hover_text-green {{ item.title }}
+          template(v-else)
+            prismic-link(:field='item.link', v-if='item.enable').hover_text-green {{ item.title }}
+          
     
-    .right.w-2x12.text-right
+    .right.w-2x12.text-right(v-if='data.more_count')
       nav#more
-        button.hover_text-green
+        button(@click='data.open_more != data.open_more').hover_text-green
           .flex
             .text-mediumpurple.pr-2 ++
             span more
             .text-mediumpurple.pl-1 ++
-        //- pre {{ data.menu.more }}
+        .more-menu(v-if='data && data.open_more')
+          .item(v-for='(item, i) in data.menu.more' :key='i', :class='{ disabled: ! item.enable }').whitespace-nowrap
+            template(v-if='item?.link?.link_type === "Web"')
+              a(:href='parseLink(item.link.url)', v-if='item.enable').hover_text-green {{ item.title }}
+            template(v-else)
+              prismic-link(:field='item.link', v-if='item.enable').hover_text-green {{ item.title }}
     
 </template>
 
@@ -27,10 +35,13 @@ const { data: menu } = await useAsyncData('menu', () => client.getByType('menu')
 
 watchEffect(() => {
   data.menu = menu.value?.results?.[0]?.data
+  data.more_count = data.menu.more.filter(item => item?.enable === true).length > 0 ? true : false
+  data.open_more = false
 })
 
+
 const parseLink = (link) => {
-  if (link.startsWith('https:///')) {
+  if (link && link.startsWith('https:///')) {
     return link.slice(8)
   } else {
     return link

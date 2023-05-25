@@ -2,14 +2,16 @@
 .image-slice
   template(v-if="slice.slice_label === 'image-full-width'")
     .blog-header.single(:style="{ 'background-image': 'url(' + slice.primary.image.url + ')'}")
-      prismic-rich-text(:field="slice.primary.caption")
+      //- prismic-rich-text(:field="slice.primary.caption")
+      | {{ $prismic.asText(slice.primary.caption) }}
       
   template(v-else)
     .inner
       .img(:class='slice.slice_label')
         prismic-image(:field='slice.primary.image')
-      .text-right.pt-3.font-b
-        prismic-rich-text(:field='slice.primary.caption')
+      .text-right.pt-3.font-d.text-normal
+        //- prismic-rich-text(:field='slice.primary.caption')
+        | {{ $prismic.asText(slice.primary.caption) }}
 </template>
 
 

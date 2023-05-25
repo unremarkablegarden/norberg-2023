@@ -25,6 +25,7 @@ module.exports = {
       'xs': '.75rem',
       'sm': '.875rem',
       'base': '1rem',
+      'normal': '1rem',
       'lg': '1.125rem',
       'xl': '1.375rem',
       '2xl': '1.625rem',

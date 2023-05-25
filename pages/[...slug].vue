@@ -6,7 +6,7 @@
     .text-4xl
       p Page not found
       
-#page(v-else).content.w-full.lg_w-3x5.lg_m-auto
+#page(v-else).content.w-full.lg_w-3x5.lg_mx-auto.mb-32
   
   .title(v-if='doc.data.title').mb-24.mt-16.flex.align-center.justify-center.text-6xl
     UiPageTitle
@@ -16,7 +16,7 @@
     | Last updated {{ format(new Date(doc.last_publication_date), 'd MMMM yyyy') }}
   
     
-  .body
+  .body.text-2xl.lh-13
     slice-zone(:slices='doc.data.body' :components='components')
     
 </template>

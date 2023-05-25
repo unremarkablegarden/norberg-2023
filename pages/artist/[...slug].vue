@@ -1,5 +1,7 @@
 <template lang="pug">
-Artist(:data='data.doc')
+#artist.pb-20
+  Artist(:data='data.doc')
+  Marquee(type='full')
 </template>
 
 <script setup>
