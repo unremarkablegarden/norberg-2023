@@ -1,9 +1,9 @@
 <template lang="pug">
 h1.title.block.text-center
   //- pre {{ width }}
-  .under.font-a.text-purple.z-10.absolute(:style='{ width: width + "px" }')
+  .under.font-a.text-purple.z-10.absolute(:style='{ width: width + "px" }', v-if='width > 0')
     slot
-  .label.font-b.z-20.relative(:style='{ width: width + "px" }')
+  .label.font-b.z-20.relative(:style='{ width: width === 0 ? 100 + "%" : width + "px" }')
     slot
 </template>
 

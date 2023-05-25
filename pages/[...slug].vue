@@ -1,6 +1,8 @@
 <template lang="pug">
 Head
-  Title {{ $prismic.asText(doc.data.title) }} > {{ config.title }} {{ config.year }}
+  Title {{ $prismic.asText(doc?.data?.title) }} > {{ config.title }} {{ config.year }}
+
+SeoMeta(:doc='doc' :config='config')
 
 #page(v-if='!doc || !doc.data')
   #error.px-10.mt-20.flex.flex-col.items-center
@@ -8,16 +10,15 @@ Head
       UiTitle(size='xl') 404
     .text-4xl
       p Page not found
-      
+
 #page(v-else).content.w-full.lg_w-3x5.lg_mx-auto.mb-32
   
-  .title(v-if='doc.data.title').mb-24.mt-16.flex.align-center.justify-center.text-6xl
+  .title(v-if='doc?.data?.title').mb-24.mt-16.flex.align-center.justify-center.text-6xl
     UiPageTitle(:width='pageWidth')
-      div(v-html='$prismic.asText(doc.data.title)')
+      div(v-html='$prismic.asText(doc?.data?.title)')
   
   .date.text-sm.mb-4(v-if='doc.data.date').font-d.text-center.opacity-50.text-xs
     | Last updated {{ format(new Date(doc.last_publication_date), 'd MMMM yyyy') }}
-  
     
   .body.text-2xl.lh-13
     slice-zone(:slices='doc.data.body' :components='components')
@@ -47,16 +48,17 @@ const slug = useRoute().params?.slug?.[0]
 const { client } = usePrismic()
 const { data: doc } = await useAsyncData('doc', () => client.getByUID('page', slug))
 
-// get width of element #page
+
 const pageWidth = ref(0)
+
 onMounted(() => {
   pageWidth.value = document.getElementById('page').offsetWidth
-  // update on resize
+  
   window.addEventListener('resize', () => {
     pageWidth.value = document.getElementById('page').offsetWidth
   })
 })
-// kill listener on unmount
+
 onUnmounted(() => {
   window.removeEventListener('resize', () => {
     pageWidth.value = document.getElementById('page').offsetWidth
@@ -64,3 +66,8 @@ onUnmounted(() => {
 })
 
 </script>
+
+
+<style lang="sass" scoped>
+  
+</style>

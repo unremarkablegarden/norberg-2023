@@ -7,8 +7,9 @@ Head
     //- span.underline Read the full line-up below
     //- | &nbsp; :)
   .title.mb-24.mt-16.flex.align-center.justify-center.text-6xl
-    UiPageTitle Line-up
-  .artist(v-for="(artist, i) in data.docs" :key='i')
+    UiPageTitle(:width='pageWidth')
+      | Line-up
+  .artist(v-for="(artist, i) in data?.docs" :key='i', v-if='data && data.docs')
     Artist(:data='artist.data' :slug="artist.slugs?.[0]" type="lineup" ).mb-24
 </template>
 
@@ -28,13 +29,28 @@ const { data: docs } = await useAsyncData('docs', () => client.getByType('artist
 }))
 
 watchEffect(() => {
-  data.docs = docs.value?.results
-  .sort((a, b) => {
+  data.docs = docs.value?.results.sort((a, b) => {
     const aName = a.data?.headline?.[0]?.text?.toLowerCase()
     const bName = b.data?.headline?.[0]?.text?.toLowerCase()
     if (aName < bName) return -1
     if (aName > bName) return 1
     return 0
+  })
+})
+
+const pageWidth = ref(0)
+
+onMounted(() => {
+  pageWidth.value = document.getElementById('lineup').offsetWidth
+  
+  window.addEventListener('resize', () => {
+    pageWidth.value = document.getElementById('page').offsetWidth
+  })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', () => {
+    pageWidth.value = document.getElementById('lineup').offsetWidth
   })
 })
 </script>
