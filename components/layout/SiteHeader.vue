@@ -4,7 +4,7 @@
     .left.date
       | {{ config.dates }}
     .middle.tickets.text-center
-      nuxt-link(to='/tickets').hover_underline
+      nuxt-link(:to='config.tickets.link', target="_blank").hover_underline
         | {{ config.tickets.title }}
     .right.location.text-right.hidden.md_block
       | {{ config.location }}
