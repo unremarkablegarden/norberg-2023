@@ -75,6 +75,7 @@ export default defineNuxtConfig({
           'vmid': 'og:type',
           'content': 'website'
         },
+      ]
     },
   },
   
