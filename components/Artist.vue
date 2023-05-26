@@ -16,7 +16,7 @@
         
     .right.close
       .flex.justify-end.items-center
-        .label.font-b.mr-2.uppercase Close
+        .label.font-b.mr-3.uppercase.opacity-30 Close
         .X
           nuxt-link(to="/artists").text-4xl.font-b.rotate-180.hover_text-mediumpurple X
       
