@@ -26,7 +26,10 @@
           .flex.justify-center.items-center.square
             nuxt-link(to='/all-artists')
               UiButton(type='orange-black' size='xl')
-                | All artists
+                .hidden.md_block
+                  | All artists
+                .block.md_hidden
+                  | All
               
 </template>
 
