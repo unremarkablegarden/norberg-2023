@@ -15,8 +15,10 @@
           UiTitle(size='xl') {{ $prismic.asText(data.headline) }}
         
     .right.close
-      .animate-spin
-        nuxt-link(to="/artists").text-4xl.font-b.rotate-180.hover_text-mediumpurple X
+      .flex.justify-end.items-center
+        .label.font-b.mr-2.uppercase Close
+        .X
+          nuxt-link(to="/artists").text-4xl.font-b.rotate-180.hover_text-mediumpurple X
       
   .flex.flex-wrap.md_flex-nowrap
     .left.lg_mr-6.w-full.md_w-6x12.lg_w-8x12.md_pr-8.lg_pr-16
