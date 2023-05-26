@@ -1,5 +1,5 @@
 <template lang="pug">
-#logo.flex.justify-center.pt-4.pb-4
+#logo(:style='"opacity: " + logoOpacity').flex.justify-center.pt-4.pb-4
   nuxt-link(to="/")
     nuxt-img(:src="data?.logo?.url" :alt="data?.logo?.alt" width="1000" class='w-[370px]')
 </template>
@@ -12,5 +12,22 @@ const { data: logo } = await useAsyncData('logo', () => client.getByType('homepa
 
 watchEffect(() => {
   data.logo = logo.value?.results?.[0]?.data?.logo
+})
+
+// watch scroll amount from top of screen
+const scrollY = ref(0)
+const logoOpacity = ref(1)
+onMounted(() => {
+  window.addEventListener('scroll', () => {
+    scrollY.value = window.scrollY
+    logoOpacity.value = 1 - (scrollY.value / 300)
+  })
+  
+})
+// remove on unmout
+onUnmounted(() => {
+  window.removeEventListener('scroll', () => {
+    scrollY.value = window.scrollY
+  })
 })
 </script>
