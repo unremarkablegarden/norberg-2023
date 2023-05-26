@@ -1,10 +1,10 @@
 <template lang="pug">
-#menu.bg-primary2(v-if='data && data.menu')
+#menu.bg-primary2(v-if='data && data.menu').pt-2
   //- pre {{ showMenu }}
   .mobile-toggle(:class="{ 'hidden': showMenu, 'block md_hidden': !showMenu }").flex.justify-end.w-full.text-xl.mt-2.-mb-4.relative.z-50
     button(@click='showMenu = !showMenu') + menu
   
-  .inner(:class="{ 'hidden md_block': !showMenu, 'block': showMenu }").flex.justify-between.text-4xl.md_text-xl.pt-2.fixed.md_relative.top-0.left-0.right-0.bottom-0.z-40.backdrop-blur-md.pt-16.md_pt-0
+  .inner(:class="{ 'hidden md_block': !showMenu, 'block': showMenu }").flex.justify-between.text-4xl.md_text-xl.pt-2.fixed.md_relative.top-0.left-0.right-0.bottom-0.z-40.backdrop-blur-md.md_backdrop-blur-none.pt-16.md_pt-0
     
     .left(:class="{ 'w-full': !data.more_count, 'w-10x12': data.more_count }")
       nav(v-if='data && data.menu')#main.flex.md_justify-between.w-full.flex-wrap

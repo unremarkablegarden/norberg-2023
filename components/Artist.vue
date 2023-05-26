@@ -1,5 +1,11 @@
 <template lang="pug">
 .artist
+  .mobile-image.image.w-full.shadow-marijn-big.block.md_hidden.mb-8
+    prismic-image(
+      :field="data.image"
+      :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
+    )
+
   .flex.justify-between.mb-5
     .left.w-11x12.lg_w-7x12
       .title.text-3xl.md_text-3.lg_text-5xl.xl_text-6xl
@@ -14,7 +20,8 @@
       
   .flex.flex-wrap.md_flex-nowrap
     .left.lg_mr-6.w-full.md_w-6x12.lg_w-8x12.md_pr-8.lg_pr-16
-      .flex.mb-8.lg_mb-16.normal-case.scale-75.md_scale-100
+    
+      .flex.mb-6.lg_mb-16.normal-case.scale-75.md_scale-100
         UiButton(type="trans" size="xl") Program info later
         //- UiButton(type="trans" size="xl") Date
         //- UiButton(type="trans" size="xl") Time
@@ -25,7 +32,7 @@
         prismic-rich-text(:field="data.body")
       
     .right.w-full.md_w-6x12.lg_w-4x12
-      .image.w-full.shadow-marijn-big
+      .image.w-full.shadow-marijn-big.hidden.md_block
         prismic-image(
           :field="data.image"
           :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
@@ -48,7 +55,11 @@ const props = defineProps({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.scale-75 {
+  transform-origin: top left;
+}
+  
 ._16x9, .youtube, .vimeo {
   iframe, object, embed {
     // breakpoints:
@@ -72,16 +83,20 @@ const props = defineProps({
     }
     // lg
     @media (min-width: 1024px) {
-      width: calc((100vw - 10rem) * (1/3));
-      height: calc( ((100vw - 10rem) * (1/3)) * (9/16) );
+      // page px-10 (2.5rem)
+      // container 10x12
+      width: calc((100vw - 5rem) * (10/12) * (1/3));
+      height: calc( ((100vw - 5rem) * (1/3)) * (9/16) );
     }
     // xl
     @media (min-width: 1280px) {
-      width: calc((100vw - 10rem) * (1/3) * (11/12));
-      height: calc( ((100vw - 10rem) * (1/3)) * (11/12) * (9/16) );
+      // page px-10 (2.5rem)
+      width: calc((100vw - 5rem) * (1/3) * (8/12));
+      height: calc( ((100vw - 5rem) * (1/3)) * (8/12) * (9/16) );
     }
     // 2xl
     @media (min-width: 1536px) {
+      // page px-16 (4rem)
       width: calc((100vw - 10rem) * (1/3) * (8/12));
       height: calc( ((100vw - 10rem) * (1/3)) * (8/12) * (9/16) );
     }
