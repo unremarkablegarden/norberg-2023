@@ -1,5 +1,8 @@
 <template lang="pug">
-#logo(:style='"opacity: " + logoOpacity').flex.justify-center.pt-4.pb-4
+#logo(
+  :style='"opacity: " + logoOpacity'
+  :class="{ 'z-40': ! logoHide, 'z-0': logoHide }"
+).sticky.top-0.flex.justify-center.pt-4.pb-4
   nuxt-link(to="/")
     nuxt-img(:src="data?.logo?.url" :alt="data?.logo?.alt" width="1000" class='w-[370px]')
 </template>
@@ -17,10 +20,19 @@ watchEffect(() => {
 // watch scroll amount from top of screen
 const scrollY = ref(0)
 const logoOpacity = ref(1)
+const logoHide = ref(false)
 onMounted(() => {
   window.addEventListener('scroll', () => {
     scrollY.value = window.scrollY
-    logoOpacity.value = 1 - (scrollY.value / 300)
+    const max = 300
+    logoOpacity.value = (1 - (scrollY.value / max)) > 0 ? (1 - (scrollY.value / max)) : 0
+    
+    if (logoOpacity.value === 0) {
+      logoHide.value = true
+    } else {
+      logoHide.value = false
+    }
+    console.log(logoOpacity.value, logoHide.value)
   })
   
 })

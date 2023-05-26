@@ -4,11 +4,11 @@
   header.px-4.lg_px-10.2xl_px-16.bg-black.z-30.relative
     LayoutSiteHeader
   
-  Menu.px-4.lg_px-10.2xl_px-16.sticky.top-0.z-50
+  Menu.px-4.lg_px-10.2xl_px-16.sticky.top-4.md_top-1.z-50
   
-  Logo.sticky#logo.z-40
+  Logo#logo
   
-  main#main.px-4.lg_px-10.2xl_px-16.z-20
+  main#main.px-4.lg_px-10.2xl_px-16.z-20.relative
     slot
   
   footer.px-4.lg_px-10.2xl_px-16
@@ -24,8 +24,8 @@
     background-image: url(/gfx/lines_textures3b.png)
     background-size: 300% auto
     background-position: 0 0
-#logo
-  top: 3rem
+// #logo
+//   top: 3rem
 #main
   $logo: 190px
   $menu: 38px
