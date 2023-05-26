@@ -9,7 +9,7 @@ const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage
 Head
   Title {{ config.title }} {{ config.year }}
 
-#index(v-if='doc && doc.data')
+#index(v-if='doc && doc.data').mt-0.md_-mt-64
 
   .splash
     .text.md_absolute.text-2xl.xl_text-3xl.2xl_text-4xl.md_flex.flex-col.justify-center.items-center.px-1.md_px-10.text-center.md_text-left
@@ -28,7 +28,7 @@ Head
           img(src='/gfx/button_explore-all-artists.svg')
         span(style='font-size: 32px').pt-3 ↓
   
-  .artists.mb-20
+  .artists.mb-20.mt-0.md_mt-64
     ArtistGrid
     
 </template>
@@ -89,7 +89,7 @@ Head
     // border: 1px green solid
     width: 100vw
     @media (max-width: 767px)
-      top: 76vh
+      top: 50vh
     @media (min-width: 768px)
       top: 78vh
     

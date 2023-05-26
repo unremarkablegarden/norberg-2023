@@ -2,9 +2,11 @@
 #logo(
   :style='"opacity: " + logoOpacity'
   :class="{ 'z-40': ! logoHide, 'z-0': logoHide }"
-).sticky.top-0.flex.justify-center.pt-4.pb-4
-  nuxt-link(to="/")
-    nuxt-img(:src="data?.logo?.url" :alt="data?.logo?.alt" width="1000" class='w-[370px]')
+).sticky.top-0
+  .flex.justify-center.pt-4.pb-4
+    nuxt-link(to="/")
+      nuxt-img(:src="data?.logo?.url" :alt="data?.logo?.alt" width="1000" class='w-[370px]')
+
 </template>
   
 <script setup>
@@ -32,7 +34,6 @@ onMounted(() => {
     } else {
       logoHide.value = false
     }
-    console.log(logoOpacity.value, logoHide.value)
   })
   
 })
