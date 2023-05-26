@@ -5,6 +5,7 @@
       :field="data.image"
       :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
     )
+    prismic-rich-text(:field="data.image_credit").credit.mt-2.text-sm.font-d
 
   .flex.justify-between.mb-5
     .left.w-11x12.lg_w-7x12
@@ -40,6 +41,8 @@
           :field="data.image"
           :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
         )
+        prismic-rich-text(:field="data.image_credit").credit.mt-2.text-sm.font-d
+        
       .embeds(v-if='data.embeds.length > 0').mt-8.mb-8
         .embed(v-for='(e, i) in data.embeds')
           template(v-if='e.embed?.provider_name')
