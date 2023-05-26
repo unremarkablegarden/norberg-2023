@@ -55,11 +55,12 @@ const props = defineProps({
 })
 </script>
 
-<style lang="scss" scoped>
-.scale-75 {
-  transform-origin: top left;
-}
-  
+<style lang="sass" scoped>
+.scale-75 
+  transform-origin: top left
+</style>
+
+<style lang="scss">
 ._16x9, .youtube, .vimeo {
   iframe, object, embed {
     // breakpoints:
