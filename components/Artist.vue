@@ -88,15 +88,15 @@ const props = defineProps({
     // lg
     @media (min-width: 1024px) {
       // page px-10 (2.5rem)
-      // container 10x12
-      width: calc((100vw - 5rem) * (10/12) * (1/3));
-      height: calc( ((100vw - 5rem) * (1/3)) * (9/16) );
+      // container 11x12
+      width: calc((100vw - 5rem) * (11/12) * (1/3));
+      height: calc( ((100vw - 5rem) * (11/12) * (1/3)) * (9/16) );
     }
     // xl
     @media (min-width: 1280px) {
       // page px-10 (2.5rem)
-      width: calc((100vw - 5rem) * (1/3) * (8/12));
-      height: calc( ((100vw - 5rem) * (1/3)) * (8/12) * (9/16) );
+      width: calc((100vw - 5rem) * (1/3) * (10/12));
+      height: calc( ((100vw - 5rem) * (1/3)) * (10/12) * (9/16) );
     }
     // 2xl
     @media (min-width: 1536px) {
