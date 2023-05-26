@@ -15,10 +15,11 @@
           UiTitle(size='xl') {{ $prismic.asText(data.headline) }}
         
     .right.close
-      .flex.justify-end.items-center
+      //- pre {{  router?.options?.history?.state?.back }}
+      .flex.justify-end.items-center(v-if='type !== "lineup"')
         .label.font-b.mr-3.uppercase.opacity-30 Close
         .X
-          nuxt-link(to="/lineup").text-4xl.font-b.rotate-180.hover_text-mediumpurple X
+          nuxt-link(:to="close_link").text-4xl.font-b.rotate-180.hover_text-mediumpurple X
       
   .flex.flex-wrap.md_flex-nowrap
     .left.lg_mr-6.w-full.md_w-6x12.lg_w-8x12.md_pr-8.lg_pr-16
@@ -55,6 +56,14 @@ const props = defineProps({
   slug: String,
   type: String
 })
+
+const close_link = ref('/lineup')
+const router = useRouter()
+// if last page was /all-artists, go back to that, otherwise go to /lineup
+const last_page = router?.options?.history?.state?.back
+if (last_page === '/all-artists') {
+  close_link.value = '/all-artists'
+}
 </script>
 
 <style lang="scss" scoped>
