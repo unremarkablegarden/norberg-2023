@@ -14,7 +14,7 @@
       
   .flex.flex-wrap.md_flex-nowrap
     .left.lg_mr-6.w-full.md_w-6x12.lg_w-8x12.md_pr-8.lg_pr-16
-      .flex.mb-8.lg_mb-16.normal-case
+      .flex.mb-8.lg_mb-16.normal-case.scale-75.md_scale-100
         UiButton(type="trans" size="xl") Program info later
         //- UiButton(type="trans" size="xl") Date
         //- UiButton(type="trans" size="xl") Time

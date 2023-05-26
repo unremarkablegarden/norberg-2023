@@ -12,7 +12,7 @@ Head
 #index(v-if='doc && doc.data')
 
   .splash
-    .text.md_absolute.text-2xl.xl_text-3xl.2xl_text-4xl.md_flex.flex-col.justify-center.items-center.px-2.md_px-10.text-center.md_text-left
+    .text.md_absolute.text-2xl.xl_text-3xl.2xl_text-4xl.md_flex.flex-col.justify-center.items-center.px-1.md_px-10.text-center.md_text-left
       .w-full.xl_w-11x12.2xl_w-10x12
         prismic-rich-text(:field="doc.data.body")
     
