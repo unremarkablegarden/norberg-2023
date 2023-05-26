@@ -55,9 +55,10 @@ const props = defineProps({
 })
 </script>
 
-<style lang="sass" scoped>
-.scale-75 
-  transform-origin: top left
+<style lang="scss" scoped>
+.scale-75 {
+  transform-origin: left
+}
 </style>
 
 <style lang="scss">

@@ -2,7 +2,7 @@
 #artist-grid
   .wrapper
     .flex.flex-wrap
-      .artist(v-for="(artist, i) in data.artists").w-1x2.md_w-4x12.lg_w-3x12.xl_w-2x12
+      .artist(v-for="(artist, i) in data.artists").w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5.2xl_w-1x6
         .p-2.pb-2.md_pb-3.xl_p-3
           //- .md_p-4.md_pb-8
           //- .lg_p-8.lg_pb-12
@@ -21,12 +21,12 @@
                   UiButton(type='trans' size='sm') 
                     | {{ artist.data?.type }}
       
-      .artist.see-all-artists.w-full.md_w-4x12.lg_w-3x12.xl_w-2x12
-        .p-2.pb-4
+      .artist.see-all-artists.w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5.2xl_w-1x6
+        .p-0.pb-4
           .flex.justify-center.items-center.square
-            nuxt-link(to='/artists')
+            nuxt-link(to='/all-artists')
               UiButton(type='orange-black' size='xl')
-                | See all artists
+                | All artists
               
 </template>
 

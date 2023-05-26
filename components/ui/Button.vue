@@ -3,7 +3,7 @@ button(:class='{ "orange-black": type == "orange-black", "trans": type == "trans
   .inner.flex.overflow-hidden(:class='{ "h-8": size == "xl", "h-4": size == "sm" }')
     .left.decoration
     .label(:class='{ "text-xs px-0": size == "sm", "text-xl px-4": size == "xl", "bg-black text-orange": type == "orange-black" }').uppercase.py-1
-      .label-inner(:class='{ "-translate-y-[2.5px]": size == "sm", "-translate-y-[2px]": size == "xl" }')
+      .label-inner(:class='{ "-translate-y-[2.5px]": size == "sm" && type == "trans", "-translate-y-[2px]": size == "xl" && type == "trans" }')
         slot
     .right.decoration
   //- pre {{ props }}
@@ -31,6 +31,10 @@ const props = defineProps({
 //   transition: all 0.2s ease-out
 //   transform: scale(1.05)
 button
+  transition: all 0.2s ease
+  &:hover
+    transition: all 0.2s ease
+    transform: scale(1.1)
   .bg-black
     background: #000 !important
   display: inline-block
