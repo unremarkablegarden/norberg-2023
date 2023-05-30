@@ -24,7 +24,7 @@ Head
           //- .md_flex.flex-col.justify-center.items-center.top-0
           .mask(class='-translate-x-[240px] -translate-y-[170px]').scale-50.md_scale-100.xl_scale-100.2xl_scale-100.md_-translate-x-0.md_-translate-y-0
             .container(v-if='doc.data.embed_vimeo_id')
-              //- iframe(:src="'https://player.vimeo.com/video/'+ doc.data.embed_vimeo_id +'?autoplay=1&loop=1&muted=1&background=0&color=000000&byline=0&controls=0&dnt=1&pip=0&inline=1&title=0&transparent=1'" width='858' height='574' frameborder='0' allow='autoplay;')     
+              iframe(:src="'https://player.vimeo.com/video/'+ doc.data.embed_vimeo_id +'?autoplay=1&loop=1&muted=1&background=0&color=000000&byline=0&controls=0&dnt=1&pip=0&inline=1&title=0&transparent=1'" width='858' height='574' frameborder='0' allow='autoplay;')     
     
     .bottom
       Marquee
