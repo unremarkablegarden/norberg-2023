@@ -1,9 +1,10 @@
 <template lang="pug">
 #artist-grid
-  .wrapper
+  .wrapper.-m-2
     .flex.flex-wrap
-      .artist(v-for="(artist, i) in data.artists").w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5.2xl_w-1x6
-        .p-2.pb-2.md_pb-3.xl_p-3
+      .artist(v-for="(artist, i) in data.artists").w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5
+        .pb-2.md_pb-3.xl_p-3.p-2
+          //- .p-2
           //- .md_p-4.md_pb-8
           //- .lg_p-8.lg_pb-12
           nuxt-link(:to="`/artist/${artist.slugs?.[0]}`")
@@ -14,14 +15,14 @@
                   :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
                 ).img
                   
-              .text.flex.justify-between.mt-2.2xl_text-xl
+              .text.flex.justify-between.mt-2.2xl_text-xl.text-lg
                 .name
                   prismic-rich-text(:field="artist.data?.headline")
                 .type(v-if="artist.data?.type")
                   UiButton(type='trans' size='sm') 
                     | {{ artist.data?.type }}
       
-      .artist.see-all-artists.w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5.2xl_w-1x6
+      .artist.see-all-artists.w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5
         .p-0.pb-4
           .flex.justify-center.items-center.square
             nuxt-link(to='/all-artists')

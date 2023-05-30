@@ -1,29 +1,26 @@
 <template lang="pug">
 .artist
-  .mobile-image.image.w-full.shadow-marijn-big.block.md_hidden.mb-8
-    prismic-image(
-      :field="data.image"
-      :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
-    )
-    prismic-rich-text(:field="data.image_credit").credit.mt-2.text-sm.font-d
-
+  .logo-spacer.h-40.md_h-40.lg_h-48
   .flex.justify-between.mb-5
-    .left.w-11x12.lg_w-7x12
-      .title.text-3xl.md_text-3.lg_text-5xl.xl_text-6xl
+    .left.w-full
+      //- .w-11x12.lg_w-7x12
+      .title.text-4xl.md_text-5xl.lg_text-6xl.xl_text-6xl
         nuxt-link(v-if='type === "lineup"' :to="'/artist/' + slug")
           UiTitle(size='xl') {{ $prismic.asText(data.headline) }}
         template(v-else)
           UiTitle(size='xl') {{ $prismic.asText(data.headline) }}
         
-    .right.close
-      //- pre {{  router?.options?.history?.state?.back }}
+    //- .right.back
       .flex.justify-end.items-center(v-if='type !== "lineup"')
-        .label.font-b.mr-3.uppercase.opacity-30 Close
-        .X
-          nuxt-link(:to="close_link").text-4xl.font-b.rotate-180.hover_text-mediumpurple X
+        //- .label.font-b.mr-3.uppercase.opacity-30 Close
+        .back
+          nuxt-link(:to="close_link").font-a.rotate-180.hover_text-mediumpurple 
+            .flex.justify-end.items-center
+              .text-2xl.lg_text-3xl &larr;
+              .text-xl.lg_text-2xl.uppercase.pl-3 back
       
   .flex.flex-wrap.md_flex-nowrap
-    .left.lg_mr-6.w-full.md_w-6x12.lg_w-8x12.md_pr-8.lg_pr-16
+    .left.lg_mr-6.w-full.md_w-8x12.lg_w-8x12.md_pr-8.lg_pr-16
     
       .flex.mb-6.lg_mb-16.normal-case.scale-75.md_scale-100
         UiButton(type="trans" size="xl") {{ data?.type }}
@@ -32,23 +29,24 @@
         //- UiButton(type="trans" size="xl") Tag
         //- UiButton(type="trans" size="xl") Venue
       
-      .body.content.mb-8.font-d.text-base.md_text-lg.lg_text-xl
+      .body.content.mb-8.font-d.lh-13.text-base.md_text-lg.lg_text-xl
+        //- .xl_text-2xl
         prismic-rich-text(:field="data.body")
       
-    .right.w-full.md_w-6x12.lg_w-4x12
-      .image.w-full.shadow-marijn-big.hidden.md_block
+    .right.w-full.md_w-4x12.lg_w-4x12
+      .image.w-full.shadow-marijn-big
+        //- .hidden.md_block
         prismic-image(
           :field="data.image"
           :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
         )
-        prismic-rich-text(:field="data.image_credit").credit.mt-2.text-sm.font-d
+        
+      prismic-rich-text(:field="data.image_credit", v-if='data.image_credit').credit.mt-2.text-sm.font-d
         
       .embeds(v-if='data.embeds.length > 0').mt-8.mb-8
         .embed(v-for='(e, i) in data.embeds')
           template(v-if='e.embed?.provider_name')
-            //- strong {{ e.embed.provider_name }}
             .embed-container.shadow-marijn-big(:class='e.embed.provider_name ? e.embed.provider_name.toLowerCase() : null')
-              //- pre {{ e.embed}}
               .iframe(v-html='e.embed.html')
             
 </template>

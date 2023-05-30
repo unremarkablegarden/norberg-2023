@@ -2,15 +2,15 @@
 Head
   Title {{ data.doc?.headline?.[0]?.text }} at {{ config.title }} {{ config.year }}
   
-#artist.pb-20
-  .mx-auto.w-full.md_w-12x12.lg_w-11x12.xl_w-10x12.2xl_w-8x12
-    Artist(:data='data.doc')
-  Marquee(type='full')
+#artist.pb-20.lg_pt-8
+  //- .mx-auto.w-full.md_w-12x12.lg_w-11x12.xl_w-10x12.2xl_w-8x12
+  Artist(:data='data.doc')
+  //- Marquee(type='full')
 </template>
 
 <script setup>
 const config = useAppConfig()
-definePageMeta({ layout: "plain" })
+// definePageMeta({ layout: "plain" })
 
 const slug = useRoute().params.slug[0]
 const { client } = usePrismic()

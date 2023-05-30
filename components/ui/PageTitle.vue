@@ -1,5 +1,6 @@
 <template lang="pug">
-h1.title.block.text-center
+h1.title.block
+  //- .text-center
   //- pre {{ width }}
   .under.font-a.text-purple.z-10.absolute(:style='{ width: width + "px" }', v-if='width > 0')
     slot

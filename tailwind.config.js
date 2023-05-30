@@ -6,7 +6,8 @@ module.exports = {
     colors: {
       'white': '#FFFEF9',
       'offwhite': '#F7F7F0',
-      'black': '#191F16',
+      'offblack': '#191F16',
+      'black': '#000000',
       'darkgrey': '#7E7E74',
       'lightgrey': '#CDCDCD',
       'primary': '#FF5701',
@@ -34,6 +35,9 @@ module.exports = {
       '4xl': '2.5rem',
       '5xl': '3rem',
       '6xl': '4rem',
+      '7xl': '5rem',
+      '8xl': '6rem',
+      '9xl': '8rem',
       // 'h1': ['51px', { lineHeight: '100%', letterSpacing: '-0.02em' }],
     },
     

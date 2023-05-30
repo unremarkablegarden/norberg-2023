@@ -12,13 +12,14 @@ SeoMeta(:doc='doc' :config='config')
       p Page not found
 
 #page(v-else).content.mb-32.w-full
-  //- .lg_w-3x5.lg_mx-auto
+  .logo-spacer.h-36.md_h-40.lg_h-48
   
-  #title(v-if='doc?.data?.title').mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.flex.align-center.justify-center.text-4xl.md_text-5xl.lg_text-6xl
-    UiPageTitle(:width='pageWidth')
-      div(v-html='$prismic.asText(doc?.data?.title)')
+  #title(v-if='doc?.data?.title').mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-4.xl_mt-10.2xl_mt-16.flex.align-center.justify-center.text-5xl.md_text-6xl.lg_text-7xl.leading-none.w-full.lg_w-11x12.xl_w-9x12.2xl_w-7x12.mx-auto
   
-  .date.text-sm.mb-4(v-if='doc.data.date').font-d.text-center.opacity-50.text-xs
+    UiPageTitle(:width='pageWidth').text-center
+      h1(v-html='$prismic.asText(doc?.data?.title)').hyphens-auto.md_hyphens-manual
+  
+  //- .date.text-sm.mb-4(v-if='doc.data.date').font-d.text-center.opacity-50.text-xs
     | Last updated {{ format(new Date(doc.last_publication_date), 'd MMMM yyyy') }}
     
   .body.text-2xl.lh-13

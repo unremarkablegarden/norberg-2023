@@ -17,9 +17,9 @@ const props = defineProps({
 
 <style lang="sass">
 // media query breakpoint large
-@media (min-width: 1024px)
-  .lg_text-6xl
-    @apply text-6xl
+// @media (min-width: 1024px)
+//   .lg_text-6xl
+//     @apply text-6xl
 
 .block-quotation
   div

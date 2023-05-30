@@ -1,9 +1,10 @@
 <template lang="pug">
-h1(:class='{ "": size == "sm", "": size == "xl" }').title.flex
-  .decoration.left(class='w-[1.1rem] md_w-[1.4rem] lg_w-[1.6rem] xl_w-[1.8rem] 2xl_w-[2rem]')
+h1.title.flex.h-8
+  .decoration.left
   .label.bg-black.text-green.pb-1
-    slot
-  .decoration.right(class='w-[1.5rem] md_w-[1.8rem] lg_w-[2rem] xl_w-[2.3rem] 2xl_w-[2.5rem]')
+    .translate-y-1.md_translate-y-0
+      slot
+  .decoration.right
 </template>
 
 <script setup>
@@ -20,17 +21,18 @@ const props = defineProps({
   // display: inline-block
 .bg-black
   background: #000 !important
+.label
+  padding: 0 0.5rem 0 0.3rem
 .decoration
-  // box-shadow: 0 0 0 1px blue
-  background-size: auto 102%
-  // background-size: 100% auto
+  // box-shadow: 0 0 0 1px #000
+  background-size: 0.7rem auto
   background-repeat: no-repeat
   display: inline-block
+  width: 0.9rem
   // height: 5rem
   // height: 100%
   // background-color: white
   background-color: transparent
-  background-position-y: top
   &.left
     background-position-x: right
     transform: translateX(2px)
