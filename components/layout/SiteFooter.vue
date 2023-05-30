@@ -8,6 +8,24 @@
           :field='s.image' :imgix-params='{ w: 200, h: 200, fm: "png",invert: s.invert }'
           :style='"transform: scale(" + (s.zoom || 1) + ")"'
         )
+        
+  .credits.font-d.text-sm.pb-6.text-offblack
+    .flex.justify-center
+      .txt
+        span Website designed by 
+        a(href='https://marijndegenaar.net', target='_blank').underline Marijn Degenaar
+        
+      .txt
+        span &nbsp;and coded by 
+        a(href='https://unremarkablegarden.com', target='_blank').underline Olle Holmberg
+    .fonts.text-center.pt-2.text-xs
+      span Typefaces: 
+      a(href='https://www.bb-bureau.fr/', target='_blank').font-a.underline Tokyto
+      span &nbsp;by Benoît Bodhuin
+      span &nbsp;and 
+      a(href='https://abcdinamo.com/typefaces/diatype', target='_blank').underline Diatype
+      span &nbsp;by Dinamo
+      
 </template>
 
 <script setup>
