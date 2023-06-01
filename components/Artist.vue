@@ -41,7 +41,7 @@
           :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
         )
         
-      prismic-rich-text(:field="data.image_credit", v-if='data.image_credit').credit.mt-2.text-sm.font-d
+      prismic-rich-text(:field="data.photo_credit", v-if='$prismic.asText(data.photo_credit)').credit.mt-2.text-sm.font-d.text-right
         
       .embeds(v-if='data.embeds.length > 0').mt-8.mb-8
         .embed(v-for='(e, i) in data.embeds')
