@@ -3,7 +3,7 @@
   .mobile-toggle(:class="{ 'hidden': showMenu, 'block md_hidden': !showMenu }").flex.justify-end.w-full.text-xl.mt-2.-mb-4.relative.z-50
     button(@click='showMenu = !showMenu') + menu
   
-  .inner(:class="{ 'hidden md_block': !showMenu, 'block': showMenu }").flex.justify-between.fixed.md_relative.top-0.left-0.right-0.bottom-0.z-40.pt-16.md_pt-0.bg-primary.md_bg-transparent.md_text-xl.lg_text-2xl.2xl_text-3xl
+  .inner(:class="{ 'hidden md_block': !showMenu, 'block': showMenu }").flex.justify-between.fixed.md_relative.top-0.left-0.right-0.bottom-0.z-40.pt-16.md_pt-0.bg-primary.md_bg-transparent.text-4xl.md_text-xl.lg_text-2xl.2xl_text-3xl
     //- .backdrop-blur-md.md_backdrop-blur-none.
     
     .left(:class="{ 'w-full': !data.more_count, 'w-10x12': data.more_count }")
@@ -16,8 +16,9 @@
           template(v-else)
             prismic-link(:field='item.link', v-if='item.enable').hover_text-green {{ item.title }}
         
-        .item.close.block.md_hidden.whitespace-nowrap.w-full.md_w-auto.text-center.md_text-left
-          button(@click='showMenu = false') close
+        .item.close.block.md_hidden.whitespace-nowrap.w-full.md_w-auto.text-center.md_text-left.text-6xl.font-d
+          button(@click='showMenu = false') ✕
+          
     
     .right.w-2x12.text-right(v-if='data.more_count')
       nav#more
