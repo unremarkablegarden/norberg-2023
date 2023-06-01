@@ -20,7 +20,8 @@
                   prismic-rich-text(:field="artist.data?.headline")
                 .type(v-if="artist.data?.type")
                   UiButton(type='trans' size='sm') 
-                    | {{ artist.data?.type }}
+                    //- | {{ artist.data?.type }}
+                    | {{ artist.data?.type === 'Performer' ? 'Performance' : artist.data?.type }}
       
       .artist.see-all-artists.w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5
         .p-0.pb-4
