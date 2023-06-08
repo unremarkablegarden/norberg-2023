@@ -1,5 +1,5 @@
 <template lang="pug">
-.artist
+.artist(v-if='data')
   .logo-spacer.h-40.md_h-40.lg_h-48
   .flex.justify-between.mb-5
     .left.w-full

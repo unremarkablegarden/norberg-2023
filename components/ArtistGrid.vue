@@ -22,6 +22,7 @@
                   UiButton(type='trans' size='sm') 
                     //- | {{ artist.data?.type }}
                     | {{ artist.data?.type === 'Performer' ? 'Performance' : artist.data?.type }}
+              pre {{ artist.slugs }}
       
       .artist.see-all-artists.w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5
         .p-0.pb-4
@@ -46,9 +47,7 @@ const props = defineProps({
 const { client } = usePrismic()
 const data = reactive({})
 
-const { data: artists } = await useAsyncData('artists', () => client.getByType('artist', { 
-  pageSize: 100,
-}))
+const { data: artists } = await useAsyncData('artists', () => client.getByType('artist', {  pageSize: 100 }))
 
 watchEffect(() => {
   data.artists = artists.value?.results

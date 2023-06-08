@@ -16,7 +16,7 @@ const slug = useRoute().params.slug[0]
 const { client } = usePrismic()
 const data = reactive({})
 
-const { data: docs } = await useAsyncData('docs', () => client.getByType('artist'))
+const { data: docs } = await useAsyncData('docs', () => client.getByType('artist', { pageSize: 100 }))
 
 watchEffect(() => {
   data.doc = docs.value?.results?.find(doc => doc.slugs.includes(slug))?.data
