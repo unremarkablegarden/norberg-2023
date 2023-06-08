@@ -34,12 +34,14 @@
         prismic-rich-text(:field="data.body")
       
     .right.w-full.md_w-4x12.lg_w-4x12
-      .image.w-full.shadow-marijn-big
+      .image.w-full.shadow-marijn-big(v-if='data.image?.url')
         //- .hidden.md_block
         prismic-image(
           :field="data.image"
           :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
         )
+      div(v-else)
+        img(src='/star.png')
         
       prismic-rich-text(:field="data.photo_credit", v-if='$prismic.asText(data.photo_credit)').credit.mt-2.text-sm.font-d.text-right
         

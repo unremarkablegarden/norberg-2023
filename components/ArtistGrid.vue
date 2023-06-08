@@ -9,11 +9,13 @@
           //- .lg_p-8.lg_pb-12
           nuxt-link(:to="`/artist/${artist.slugs?.[0]}`")
             .inner
-              .image.shadow-marijn
+              .image.shadow-marijn(v-if='artist.data?.image?.url')
                 prismic-image(
                   :field="artist.data?.image"
                   :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
                 ).img
+              div(v-else)
+                img(src='/star.png')
                   
               .text.flex.justify-between.mt-2.2xl_text-xl.text-lg
                 .name
