@@ -3,12 +3,13 @@ Head
   Title Line-up at {{ config.title }} {{ config.year }}
 
 #lineup.mb-20
-  .logo-spacer.h-36.md_h-40.lg_h-48
+  //- .logo-spacer.h-36.md_h-40.lg_h-48
   
   .md_flex.justify-between.items-center
     .title.mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.text-4xl.md_text-6xl.lg_text-7xl.xl_text-8xl.2xl_text-8xl.text-center.md_text-left.relative
       UiPageTitle(:width='pageWidth')
-        | Line-up 2023
+        | Line-up 
+        //- 2023
       
     .link(class='md_w-[300px] md_-ml-[300px]').text-center.md_text-right.md_-mt-3.mb-6.-mt-2.scale-90.md_scale-100.relative.z-50
       nuxt-link(to='/all-artists') 

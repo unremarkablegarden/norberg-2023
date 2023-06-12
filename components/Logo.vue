@@ -4,7 +4,8 @@
 ).sticky.top-0.md_top-12.z-40.pt-10.origin-top
   //- .md_origin-center
   
-  .flex.w-full.justify-center.text-center.w-full.absolute
+  //- .flex.w-full.justify-center.text-center.w-full.absolute.border
+  .absolute.border(class='left-[50vw] -translate-x-[50%]')
     nuxt-link(to="/")
       nuxt-img(
         :src="data?.logo?.url" 
