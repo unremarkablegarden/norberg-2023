@@ -3,8 +3,9 @@
   .mobile-toggle(:class="{ 'hidden': showMenu, 'block md_hidden': !showMenu }").flex.justify-end.w-full.text-xl.mt-2.-mb-4.relative.z-50
     button(@click='showMenu = !showMenu') + menu
   
-  .inner(:class="{ 'hidden md_block': !showMenu, 'block': showMenu }").flex.justify-between.fixed.md_relative.top-0.left-0.right-0.bottom-0.z-40.pt-16.md_pt-0.bg-primary.md_bg-transparent.text-4xl.md_text-xl.lg_text-2xl.2xl_text-3xl
+  .inner(:class="{ 'sm_hidden md_flex': !showMenu, 'block': showMenu }").xflex.justify-between.fixed.md_relative.top-0.left-0.z-40.pt-16.md_pt-0.bg-primary.md_bg-transparent.text-4xl.md_text-xl.lg_text-2xl.2xl_text-3xl
     //- .backdrop-blur-md.md_backdrop-blur-none.
+    //- .right-0.bottom-0
     
     .left(:class="{ 'w-full': !data.more_count, 'w-10x12': data.more_count }")
       nav(v-if='data && data.menu')#main.flex.md_justify-between.w-full.flex-wrap
@@ -20,14 +21,14 @@
           button(@click='showMenu = false') ✕
           
     
-    .right.w-2x12.text-right(v-if='data.more_count')
+    .right.w-1x12.text-right(v-if='data.more_count')
       nav#more
         button(@click='data.open_more = !data.open_more').hover_text-green
           .flex
             .text-mediumpurple.pr-2 ++
             span more
             .text-mediumpurple.pl-1 ++
-        .more-menu(v-if='data && data.open_more')
+        .more-menu(v-if='data && data.open_more').absolute.pt-2
           .item(v-for='(item, i) in data.menu.more' :key='i', :class='{ disabled: ! item.enable }').whitespace-nowrap
             template(v-if='item?.link?.link_type === "Web"')
               a(:href='parseLink(item.link.url)', v-if='item.enable').hover_text-green {{ item.title }}
