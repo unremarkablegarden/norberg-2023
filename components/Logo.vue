@@ -5,7 +5,7 @@
   //- .md_origin-center
   
   //- .flex.w-full.justify-center.text-center.w-full.absolute.border
-  .absolute.border(class='left-[50vw] -translate-x-[50%]')
+  .absolute(class='left-[50vw] -translate-x-[50%]')
     nuxt-link(to="/")
       nuxt-img(
         :src="data?.logo?.url" 
