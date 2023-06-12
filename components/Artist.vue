@@ -1,6 +1,7 @@
 <template lang="pug">
 .artist(v-if='data')
-  .logo-spacer.h-40.md_h-40.lg_h-48
+  .logo-spacer(v-if='type !== "lineup"').h-40.md_h-40.lg_h-48
+  
   .flex.justify-between.mb-5
     .left.w-full
       //- .w-11x12.lg_w-7x12

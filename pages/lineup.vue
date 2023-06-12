@@ -3,7 +3,7 @@ Head
   Title Line-up at {{ config.title }} {{ config.year }}
 
 #lineup.mb-20
-  //- .logo-spacer.h-36.md_h-40.lg_h-48
+  .logo-spacer.h-36.md_h-40.lg_h-48
   
   .md_flex.justify-between.items-center
     .title.mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.text-4xl.md_text-6xl.lg_text-7xl.xl_text-8xl.2xl_text-8xl.text-center.md_text-left.relative

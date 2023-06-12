@@ -10,10 +10,10 @@ Head
   Title {{ config.title }} {{ config.year }}
 
 #index(v-if='doc && doc.data')
-  .splash(class='h-[106vh] md_h-[68vh] lg_h-[76vh]').absolute.left-0.top-32.md_top-40.w-full.xborder.overflow-hidden.md_overflow-auto
+  .splash(class='h-[106vh] md_h-[68vh] lg_h-[76vh]').absolute.left-0.top-32.md_top-40.w-full.overflow-hidden.md_overflow-auto
   
     .md_flex
-      .left(class='h-[40vh] md_h-[49vh] lg_h-[55vh]').md_w-1x2.xborder.flex.flex-col.justify-center.items-center
+      .left(class='h-[40vh] md_h-[49vh] lg_h-[55vh]').md_w-1x2.flex.flex-col.justify-center.items-center
         .text.text-2xl.xl_text-3xl.2xl_text-4xlpx-1.text-center.md_text-left.px-3.md_px-0.md_pl-6.lg_pl-8.pt-8.md_pt-0.2xl_mx-20.2xl_text-center
           //- .md_flex.flex-col.justify-center.items-center.
           //- .w-full.xl_w-11x12.2xl_w-10x12

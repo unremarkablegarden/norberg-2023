@@ -3,31 +3,22 @@ Head
   Title Artists at {{ config.title }} {{ config.year }}
 
 #artists
+  .logo-spacer.h-36.md_h-40.lg_h-48
   //- .mx-auto.w-full.md_w-12x12.lg_w-11x12.xl_w-10x12.2xl_w-8x12
-
-  .md_flex.justify-between.items-center
   
-    .title.mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.text-4xl.md_text-6xl.lg_text-7xl.xl_text-8xl.2xl_text-8xl.text-center.md_text-left
+  .md_flex.justify-between.items-center
+    .title.mt-2.md_mt-4.lg_mt-10.text-4xl.md_text-6xl.lg_text-7xl.xl_text-8xl.2xl_text-8xl.text-center.md_text-left.mb-8.md_mb-12.lg_mb-20
       UiPageTitle(:width='pageWidth')
         | All artists
     
-    .link(class='md_w-[300px] md_-ml-[300px]').text-center.md_text-right.md_-mt-5.mb-6.-mt-2.scale-90.md_scale-100.relative.z-50
+    .link(class='md_w-[300px] md_-ml-[300px]').text-center.md_text-right.scale-90.md_scale-100.relative.z-50
+      //- .md_-mt-5.mb-6.-mt-2
       nuxt-link(to='/lineup') 
         UiButton(type='orange-black' size='xl') View as a grid
-  
-  //- .txt
-    .font-d.text-sm.md_text-base.lg_text-lg.text-center.mb-8.md_mb-10.lg_mb-20.xl_mb-20.2xl_mb-24
-      p Here you can read all the artist bios in one place
-      p.opacity-30
-        em Keep in mind that we haven't announced all the artists yet :)
-      
-      p Looking for somebody in particular? 
-      p 
-        | You can 
-        nuxt-link(to='/lineup') find artists from the overview here
-  
+
   .artist(v-for="(artist, i) in data?.docs" :key='i', v-if='data && data.docs')
     Artist(:data='artist.data' :slug="artist.slugs?.[0]" type="lineup" ).mb-10.lg_mb-24
+    
 </template>
 
 
