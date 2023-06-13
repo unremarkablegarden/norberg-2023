@@ -10,7 +10,7 @@
         )
         
   .credits.font-d.text-sm.pb-6.text-offblack
-    .flex.justify-center
+    .md_flex.justify-center.text-center
       .txt
         span Website designed by 
         a(href='https://marijndegenaar.net', target='_blank').underline Marijn Degenaar

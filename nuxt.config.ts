@@ -107,6 +107,8 @@ export default defineNuxtConfig({
 
   prismic: {
     endpoint: 'norbergfestival-2023',
+    toolbar: false,
+    preview: false,
   },
 
   runtimeConfig: {
@@ -119,6 +121,7 @@ export default defineNuxtConfig({
   },
 
   devtools: {
-    enabled: true
+    // enabled: true
+    enabled: false
   },
 })
