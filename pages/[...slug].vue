@@ -1,8 +1,10 @@
 <template lang="pug">
-Head
+//- Head
   Title {{ $prismic.asText(doc?.data?.title) }} > {{ config.title }} {{ config.year }}
+  
+SeoMeta(:title='seo.title' :description='seo.description' :image='seo.image')
 
-SeoMeta(:doc='doc' :config='config')
+//- SeoMeta(:doc='doc' :config='config')
 
 #page(v-if='!doc || !doc.data')
   #error.px-10.mt-20.flex.flex-col.items-center
@@ -49,6 +51,32 @@ const components = defineSliceZoneComponents({
 const slug = useRoute().params?.slug?.[0]
 const { client } = usePrismic()
 const { data: doc } = await useAsyncData('doc', () => client.getByUID('page', slug))
+
+const seo = reactive({
+  title: '',
+  description: '',
+  image: ''
+})
+
+seo.title = doc.value.data?.title?.[0]?.text
+
+doc.value.data?.body?.forEach(slice => {
+  if (slice?.slice_type === 'text') {
+    seo.description = slice?.primary?.text?.[0]?.text
+    return
+  }
+})
+
+doc.value.data?.body?.forEach(slice => {
+  if (slice?.slice_type === 'image_with_caption') {
+    let image = slice?.primary?.image?.url
+    image = image.replace(/h=\d+/, 'h=630').replace(/w=\d+/, 'w=1200')
+    image = image.includes('fit=') ? image.replace(/fit=\w+/, 'f=crop') : image + '&fit=crop'
+    seo.image = image
+    return
+  }
+})
+
 
 
 const pageWidth = ref(0)

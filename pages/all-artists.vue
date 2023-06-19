@@ -1,6 +1,7 @@
 <template lang="pug">
-Head
-  Title Artists at {{ config.title }} {{ config.year }}
+//- Head
+//-   Title Artists at {{ config.title }} {{ config.year }}
+SeoMeta(title='"All Artists')
 
 #artists
   .logo-spacer.h-36.md_h-40.lg_h-48

@@ -1,6 +1,7 @@
 <template lang="pug">
-Head
+//- Head
   Title Line-up at {{ config.title }} {{ config.year }}
+SeoMeta(title='Line-up')
 
 #lineup.mb-20
   .logo-spacer.h-36.md_h-40.lg_h-48

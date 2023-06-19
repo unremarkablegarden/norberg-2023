@@ -11,71 +11,71 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1, user-scalable=no',
       htmlAttrs: { lang: 'en' },
       link: [{ rel: 'icon', type: 'image/png', href: '/star.png' }],
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: meta.description
-        }, 
-        {
-          hid: 'image',
-          name: 'image',
-          content: meta.image
-        },
-        {
-          'name': 'twitter:card',
-          'vmid': 'twitter:card',
-          'content': 'summary'
-        }, {
-          'name': 'twitter:title',
-          'vmid': 'twitter:title',
-          'content': meta.title
-        }, {
-          'name': 'twitter:description',
-          'vmid': 'twitter:description',
-          'content': meta.description
-        }, {
-          'name': 'twitter:site',
-          'vmid': 'twitter:site',
-          'content': '@norbergfestival'
-        }, {
-          'name': 'twitter:creator',
-          'vmid': 'twitter:creator',
-          'content': '@norbergfestival'
-        }, {
-          'name': 'twitter:image:src',
-          'vmid': 'twitter:image:src',
-          'content': meta.image
-        }, {
-          'name': 'og:title',
-          'vmid': 'og:title',
-          'content': meta.title
-        }, {
-          'name': 'og:description',
-          'vmid': 'og:description',
-          'content': meta.description
-        }, {
-          'name': 'og:image',
-          'vmid': 'og:image',
-          'content': meta.image
-        }, {
-          'name': 'og:url',
-          'vmid': 'og:url',
-          'content': 'https://www.norbergfestival.com/'
-        }, {
-          'name': 'og:site_name',
-          'vmid': 'og:site_name',
-          'content': meta.title
-        }, {
-          'name': 'fb:admins',
-          'vmid': 'fb:admins',
-          'content': '120018101368569'
-        }, {
-          'name': 'og:type',
-          'vmid': 'og:type',
-          'content': 'website'
-        },
-      ]
+      // meta: [
+      //   {
+      //     hid: 'description',
+      //     name: 'description',
+      //     content: meta.description
+      //   }, 
+      //   {
+      //     hid: 'image',
+      //     name: 'image',
+      //     content: meta.image
+      //   },
+      //   {
+      //     'name': 'twitter:card',
+      //     'vmid': 'twitter:card',
+      //     'content': 'summary'
+      //   }, {
+      //     'name': 'twitter:title',
+      //     'vmid': 'twitter:title',
+      //     'content': meta.title
+      //   }, {
+      //     'name': 'twitter:description',
+      //     'vmid': 'twitter:description',
+      //     'content': meta.description
+      //   }, {
+      //     'name': 'twitter:site',
+      //     'vmid': 'twitter:site',
+      //     'content': '@norbergfestival'
+      //   }, {
+      //     'name': 'twitter:creator',
+      //     'vmid': 'twitter:creator',
+      //     'content': '@norbergfestival'
+      //   }, {
+      //     'name': 'twitter:image:src',
+      //     'vmid': 'twitter:image:src',
+      //     'content': meta.image
+      //   }, {
+      //     'name': 'og:title',
+      //     'vmid': 'og:title',
+      //     'content': meta.title
+      //   }, {
+      //     'name': 'og:description',
+      //     'vmid': 'og:description',
+      //     'content': meta.description
+      //   }, {
+      //     'name': 'og:image',
+      //     'vmid': 'og:image',
+      //     'content': meta.image
+      //   }, {
+      //     'name': 'og:url',
+      //     'vmid': 'og:url',
+      //     'content': 'https://www.norbergfestival.com/'
+      //   }, {
+      //     'name': 'og:site_name',
+      //     'vmid': 'og:site_name',
+      //     'content': meta.title
+      //   }, {
+      //     'name': 'fb:admins',
+      //     'vmid': 'fb:admins',
+      //     'content': '120018101368569'
+      //   }, {
+      //     'name': 'og:type',
+      //     'vmid': 'og:type',
+      //     'content': 'website'
+      //   },
+      // ]
     },
   },
   

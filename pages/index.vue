@@ -1,13 +1,15 @@
 <script setup>
-const config = useAppConfig()
+// import { SeoMeta } from '~/.nuxt/components';
+// const config = useAppConfig()
 const { client } = usePrismic()
 const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage'))
 </script>
 
 
 <template lang="pug">
-Head
-  Title {{ config.title }} {{ config.year }}
+//- Head
+//-   Title {{ config.title }} {{ config.year }}
+SeoMeta
 
 #index(v-if='doc && doc.data')
   .splash(class='h-[106vh] md_h-[68vh] lg_h-[76vh]').absolute.left-0.top-32.md_top-40.w-full.overflow-hidden.md_overflow-auto

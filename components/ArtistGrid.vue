@@ -13,6 +13,7 @@
                 prismic-image(
                   :field="artist.data?.image"
                   :imgix-params="{ w: 800, h: 800, fit: 'facearea', facepad: 10, faceindex: 1 }"
+                  :alt="$prismic.asText(artist.data?.headline)"
                 ).img
               div(v-else)
                 img(src='/star.png')
