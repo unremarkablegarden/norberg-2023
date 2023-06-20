@@ -11,6 +11,6 @@
   main#main.px-4.lg_px-10.2xl_px-16.z-20.relative
     slot
   
-  footer.px-4.lg_px-10.2xl_px-16
+  //- footer.px-4.lg_px-10.2xl_px-16
     LayoutSiteFooter
 </template>
