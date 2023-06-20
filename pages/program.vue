@@ -4,22 +4,29 @@ SeoMeta(title='Program')
 #program
   .logo-spacer.h-36.md_h-40.lg_h-48
   
-  .days-menu.flex.gap-8.mb-16
-    .day(
-      v-for='(d, i) in datesObjects' :key='i' 
-      @click='selectedDay = d.date' 
-      :class='{ "bg-mediumpurple": selectedDay === d.date }'
-    )
-      template(v-if='d.date !== "July 9"')
-        .title.text-5xl.cursor-pointer.px-2.py-1.border.border-2 {{ d.date }}
-      //- .md_flex.justify-between.items-center
-        .title.mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.text-4xl.md_text-6xl.lg_text-7xl.xl_text-8xl.2xl_text-8xl.text-center.md_text-left.relative
-          UiPageTitle(:width='pageWidth') {{ d.date }}
-  
+  .flex.items-end
+    .headingg.w-1x2
+      .md_flex.justify-between.items-center
+      .title.mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.text-4xl.md_text-6xl.lg_text-7xl.xl_text-8xl.2xl_text-8xl.text-center.md_text-left.relative
+        UiPageTitle(:width='pageWidth/2') Program
+    .days-menu.w-1x2.flex.mb-16.pb-8.justify-end
+      .day(
+        v-for='(d, i) in datesObjects' :key='i' 
+        @click='selectedDay = d.date' 
+      )
+        template(v-if='d.date !== "July 9"')
+          .title.text-5xl.cursor-pointer.px-2.py-1.border.border-2.ml-6(
+            :class='{ "bg-mediumpurple": selectedDay === d.date }'    
+          ) 
+            | {{ d.date }}
+        //- .md_flex.justify-between.items-center
+          .title.mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.text-4xl.md_text-6xl.lg_text-7xl.xl_text-8xl.2xl_text-8xl.text-center.md_text-left.relative
+            UiPageTitle(:width='pageWidth') {{ d.date }}
+    
   .days
     .day(v-for='(d, i) in datesObjects' :key='i', :class='{ "hidden": selectedDay !== d.date }')
       
-      .locations.flex.w-full.bg-darkgrey.pt-3.border-2.border-darkpurple
+      .locations.flex.w-full.bg-orange.pt-3.border-2.border-darkpurple
         .location(v-for='(l, i2) in locations').w-1x4
       
           h3.font-a.text-2xl.pb-3.text-center.border-b-2.border-darkpurple {{ l }}
