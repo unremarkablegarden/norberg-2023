@@ -48,10 +48,15 @@ SeoMeta(title='Program')
             
               nuxt-link(:to="e?.data?.artists?.[0]?.artist.slug ? `/artist/${e?.data?.artists?.[0]?.artist.slug}` : `/program`")
                 
-                .bg-green.hover_bg-purple.px-3.py-3.shadow-border(
-                  :style='{ "height": e.data?.duration ? (e.data?.duration * programHeightMult) + "px" : 70 + "px", "width": ((pageWidth) / (div + (div == 1 ? .01 : .02))) + "px", "margin-top": (e.data?.timeOffset * programHeightMult) + "px" }'
+                .program-box.bg-green.hover_bg-purple.px-3.py-3.shadow-border.bg-cover.bg-center(
+                  :style='{ "height": e.data?.duration ? (e.data?.duration * programHeightMult) + "px" : 70 + "px", "width": ((pageWidth) / (div + (div == 1 ? .01 : .02))) + "px", "margin-top": (e.data?.timeOffset * programHeightMult) + "px", "background-image": "url("+e.data?.artists?.[0]?.artist?.data?.image?.url+")" }'
                   :class='{ "bg-lightgrey": ! e.data?.duration }'
                 )
+                  //- .image.absolute.h-20.w-20
+                  //-   prismic-image(
+                  //-     :field="e.data?.artists?.[0]?.artist?.data?.image"
+                  //-     :imgix-params="{ w: 400, h: 400, fit: 'facearea', facepad: 10, faceindex: 1 }"
+                  //-   )
                   .meta.text-sm.mb-1
                     span.start {{ e.data?.hour }}:{{ e.data?.minute }} — 
                     span.end {{ e.data?.endTime }}
@@ -105,6 +110,18 @@ SeoMeta(title='Program')
 .shadow-border {
   box-shadow: 0 0 0 1.5px black;
 }
+.bg-none {
+  background-image: none !important;
+}
+.program-box {
+  background-repeat: no-repeat;
+  background-size: 0 0;
+  &:hover {
+    background-size: cover;
+    backdrop-filter: blur(2px);
+  }
+}
+
 </style>
 
 <script setup>
@@ -117,7 +134,7 @@ const data = reactive({})
 const selectedDay = ref('July 6')
 
 const { data: docs } = await useAsyncData('docs', () => client.getByType('program', 
-{ pageSize: 100 }))
+{ pageSize: 100, fetchLinks: 'artist.image' }))
 
 const locations = [
   'Mimer',
