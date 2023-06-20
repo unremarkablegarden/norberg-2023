@@ -1,7 +1,8 @@
 <template lang="pug">
 #logo(
   :style='"transform: scale("+scrollScale+")"'
-).sticky.top-0.md_top-12.z-40.pt-10.origin-top
+).sticky.top-0.md_top-12.z-40.origin-top.pt-6
+  //- .pt-10
   //- .md_origin-center
   
   //- .flex.w-full.justify-center.text-center.w-full.absolute.border

@@ -11,8 +11,9 @@ const { data: doc } = await useAsyncData('doc', () => client.getSingle('homepage
 //-   Title {{ config.title }} {{ config.year }}
 SeoMeta
 
-#index(v-if='doc && doc.data')
-  .splash(class='h-[106vh] md_h-[68vh] lg_h-[76vh]').absolute.left-0.top-32.md_top-40.w-full.overflow-hidden.md_overflow-auto
+#index(v-if='doc && doc.data').-mt-28
+  .splash(class='h-[106vh] md_h-[68vh] lg_h-[76vh] lg_min-h-[666px]').absolute.left-0.top-32.md_top-40.w-full.overflow-hidden
+    //- .md_overflow-auto
   
     .md_flex
       .left(class='h-[40vh] md_h-[49vh] lg_h-[55vh]').md_w-1x2.flex.flex-col.justify-center.items-center
@@ -37,7 +38,7 @@ SeoMeta
   
   .spacer(class='h-[130vh] md_h-[61vh] lg_h-[68vh]')
   
-  .artists.mb-20.mt-0.md_mt-64
+  .artists.mb-20.mt-0.md_mt-64.lg_mt-72
     ArtistGrid
     
 </template>

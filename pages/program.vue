@@ -28,8 +28,7 @@ SeoMeta(title='Program')
             class='h-[920px]'
             :class='{ "border-l-2": i2 > 0, "pl-[2px]": i2 === 0 }'
           )
-            
-            
+
             .event.absolute(
               v-for='(e, j) in d.locations.find(loc => loc.location === l)?.events' 
               :key='e.id'
