@@ -1,11 +1,11 @@
 <template lang="pug">
 #marquee(:class='{ "fixed left-0 bottom-16 w-full z-50": type === "full", "": type === "small" }')
-  Vue3Marquee(duration='50' pauseOnHover='1')
+  Vue3Marquee(:duration='data.speed' pauseOnHover='1')
     .artist(v-for='(artist, i) in data.artists', class='py-0.5').text-green.text-xl.md_text-2xl.whitespace-nowrap.mr-2
       nuxt-link(:to="'/artist/' + artist.slug").hover_text-purple 
         UiTitleMarquee {{ artist.name }}
   
-  Vue3Marquee(duration='50' pauseOnHover='1' direction="reverse", v-if='type !== "full"').mt-1.md_mt-2
+  Vue3Marquee(:duration='data.speed' pauseOnHover='1' direction="reverse", v-if='type !== "full"').mt-1.md_mt-2
     .artist(v-for='(artist, i) in data.artists', class='py-0.5').text-green.text-xl.md_text-2xl.whitespace-nowrap.mr-2
       nuxt-link(:to="'/artist/' + artist.slug").hover_text-purple 
         UiTitleMarquee {{ artist.name }}
@@ -22,6 +22,7 @@ const data = reactive({})
 const { data: artists } = await useAsyncData('artists', () => client.getByType('artist', { pageSize: 100 }))
 
 watchEffect(() => {
+  data.speed = artists.value?.results?.length * 4
   data.artists = artists.value?.results.map(artist => { 
     return {
       name: artist.data.headline?.[0]?.text,

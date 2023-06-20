@@ -19,10 +19,7 @@ SeoMeta(title='Program')
             :class='{ "bg-mediumpurple": selectedDay === d.date }'    
           ) 
             | {{ d.date }}
-        //- .md_flex.justify-between.items-center
-          .title.mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.text-4xl.md_text-6xl.lg_text-7xl.xl_text-8xl.2xl_text-8xl.text-center.md_text-left.relative
-            UiPageTitle(:width='pageWidth') {{ d.date }}
-    
+
   .days
     .day(v-for='(d, i) in datesObjects' :key='i', :class='{ "hidden": selectedDay !== d.date }')
       
