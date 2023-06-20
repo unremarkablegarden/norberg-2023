@@ -82,8 +82,8 @@ const { data: docs } = await useAsyncData('docs', () => client.getByType('progra
 const locations = [
   'Mimer',
   'Kraftcentralen',
-  'Krossverket',
   '303',
+  'Krossverket',
   // 'Off-site',
   // 'Radio'
 ]
