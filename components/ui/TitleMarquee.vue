@@ -1,7 +1,7 @@
 <template lang="pug">
 h1.title.flex.h-8
   .decoration.left
-  .label.bg-black.text-green.pb-1
+  .label.bg-black.pb-1(:class="{ 'text-green': !purple, 'text-purple': purple }")
     .translate-y-1.md_translate-y-0
       slot
   .decoration.right
@@ -13,6 +13,7 @@ const props = defineProps({
   size: String,
   disabled: Boolean,
   onClick: Function,
+  purple: Boolean
 })
 </script>
 

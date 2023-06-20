@@ -1,8 +1,10 @@
 <template lang="pug">
-button(:class='{ "orange-black": type == "orange-black", "trans": type == "trans" }')
+button(
+  :class='{ "orange-black": type == "orange-black", "trans": type == "trans", "selected": selected == true, "purple-black": type == "purple-black" }'
+)
   .inner.flex.overflow-hidden(:class='{ "h-8": size == "xl", "h-4": size == "sm" }')
     .left.decoration
-    .label(:class='{ "text-xs px-0": size == "sm", "text-xl px-4": size == "xl", "bg-black text-orange": type == "orange-black" }').uppercase.py-1
+    .label(:class='{ "text-xs px-0": size == "sm", "text-xl px-4": size == "xl", "bg-black text-orange": type == "orange-black", "bg-purple": type == "purple-black" && !selected, "text-purple bg-black": selected }').uppercase.py-1
       .label-inner(:class='{ "-translate-y-[2.5px]": size == "sm" && type == "trans", "-translate-y-[2px]": size == "xl" && type == "trans" }')
         slot
     .right.decoration
@@ -13,6 +15,7 @@ button(:class='{ "orange-black": type == "orange-black", "trans": type == "trans
 const props = defineProps({
   type: String,
   size: String,
+  selected: Boolean,
   // disabled: Boolean,
   // onClick: Function,
 })
@@ -54,12 +57,13 @@ button
     &.right
       transform: translateX(-1px)
     
-  &.orange-black
+  &.orange-black, &.purple-black
     .left
       background-image: url(/gfx/button-side-fill-left.svg)
     .right
       background-image: url(/gfx/button-side-fill-right.svg)
-      
+  // &.selected
+    
   &.trans
     .label
       border: 2px solid black

@@ -4,73 +4,108 @@ SeoMeta(title='Program')
 #program
   .logo-spacer.h-36.md_h-40.lg_h-48
   
-  .flex.items-end
-    .headingg.w-1x2
+  .md_flex.items-end
+    .headingg.md_w-1x2
       .md_flex.justify-between.items-center
       .title.mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-10.text-4xl.md_text-6xl.lg_text-7xl.xl_text-8xl.2xl_text-8xl.text-center.md_text-left.relative
         UiPageTitle(:width='pageWidth/2') Program
-    .days-menu.w-1x2.flex.mb-16.pb-8.justify-end
+        
+    .days-menu.md_w-1x2.flex.md_mb-16.md_pb-8.md_justify-end
       .day(
         v-for='(d, i) in datesObjects' :key='i' 
         @click='selectedDay = d.date' 
       )
         template(v-if='d.date !== "July 9"')
-          .title.text-5xl.cursor-pointer.px-2.py-1.border.border-2.ml-6(
-            :class='{ "bg-mediumpurple": selectedDay === d.date }'    
-          ) 
-            | {{ d.date }}
+          .title.cursor-pointer.mx-3.md_ml-6.md_mr-0
+            img(
+              :src='"gfx/button_date-tab-"+(i+1)+"-" + (selectedDay === d.date ? "active" : "inactive") + ".svg"'
+              :style='{ "width": buttonWidth + "px" }'
+            )
 
   .days
     .day(v-for='(d, i) in datesObjects' :key='i', :class='{ "hidden": selectedDay !== d.date }')
       
-      .locations.flex.w-full.bg-orange.pt-3.border-2.border-darkpurple
-        .location(v-for='(l, i2) in locations').w-1x4
+      //- .locations.flex.w-full.bg-orange.pt-3.border-2.border-darkpurple
+      .locations.md_flex.w-full.bg-orangeX.pt-3
+        .location(v-for='(l, i2) in locations').md_w-1x4.border-darkpurple
       
-          h3.font-a.text-2xl.pb-3.text-center.border-b-2.border-darkpurple {{ l }}
+          //- h3.font-a.text-2xl.pb-3.text-center.border-b-2.border-darkpurple {{ l }}
+          //- h3.font-a.text-2xl.pb-3.text-center.border-b-4.border-black {{ l }}
+          .title.text-2xl.text-center.relative.mb-6.mt-8._md_mt-0.sticky.top-24.md_top-48.z-50.bg-orange
+            UiPageTitle(:width='pageWidth/div') {{ l }}
           
-          .events.border-darkpurple(
-            class='h-[920px]'
-            :class='{ "border-l-2": i2 > 0, "pl-[2px]": i2 === 0 }'
+          //- .events.border-darkpurple(
+          .events.border-black.Xmd_border-r.Xmd_border-l.border-t-4.border-b(
+            class='h-[1386px]'
           )
+            //- :class='{ "border-l-2": i2 > 0, "pl-[2px]": i2 === 0 }'
 
-            .event.absolute(
+            .event.absolute.z-20(
               v-for='(e, j) in d.locations.find(loc => loc.location === l)?.events' 
               :key='e.id'
               :style='{ "z-index": 100-j }'
             )
             
-              //- nuxt-link(:to='"/artist/" + e.slugs[0]')
               nuxt-link(:to="e?.data?.artists?.[0]?.artist.slug ? `/artist/${e?.data?.artists?.[0]?.artist.slug}` : `/program`")
                 
-                .font-d.border-2.border-darkgreen.bg-green.overflow-hidden.px-3.py-3.hover_border-darkpurple.hover_bg-purple(
-                  :style='{ "height": e.data?.duration ? (e.data?.duration * 1.5) + "px" : 70 + "px", "width": (pageWidth / 4) -3 + "px", "margin-top": (e.data?.timeOffset * 1.5) + "px" }'
-                  :class='{ "bg-purple": ! e.data?.duration }'
+                .bg-green.hover_bg-purple.px-3.py-3.shadow-border(
+                  :style='{ "height": e.data?.duration ? (e.data?.duration * programHeightMult) + "px" : 70 + "px", "width": ((pageWidth) / (div + (div == 1 ? .01 : .02))) + "px", "margin-top": (e.data?.timeOffset * programHeightMult) + "px" }'
+                  :class='{ "bg-lightgrey": ! e.data?.duration }'
                 )
-                  .meta.text-sm.mb-1.opacity-50
-                    //- pre {{ pageWidth }}
+                  .meta.text-sm.mb-1
                     span.start {{ e.data?.hour }}:{{ e.data?.minute }} — 
                     span.end {{ e.data?.endTime }}
-                    //- pre {{ e?.data?.artists?.[0]?.artist.slug }}
-                    //- span.opacity-40.text-sm.ml-2 &nbsp;({{ e.data?.formattedDuration }})
-                    //- div.text-xs
-                      //- span {{ e.data?.date }} / 
-                      //- span {{ e.data?.location }} /
-                      //- span d: {{ e.data?.duration }} / 
-                      //- span o: {{ e.data?.timeOffset }}
-                      //- div {{ e.id }}
+                    span(v-if='!e.data.duration') —Duration undetermined
                     
-                  span.font-d.text-lg.mr-1 {{ $prismic.asText(e.data?.title) }}
-                  span.text-xs.opacity-50 {{ e.data?.type }}
+                  //- span.text-lg.mr-1 {{ $prismic.asText(e.data?.title) }}
+                  .text-green.text-xl.md_text-2xl.whitespace-nowrap.mr-2.scale-75.origin-left
+                    UiTitleMarquee(:purple='false').text-xl.md_text-2xl {{ $prismic.asText(e.data?.title) }}
+                  
+                  div.text-sm.uppercase.mt-1 {{ e.data?.type }}
                   
                   pre(v-if='e.data?.offsite') {{ e.data.offsite }}
                   pre(v-if='e.data?.google_map && e.data?.google_map.link_type !== "Any"') {{ e.data.google_map }}
                   pre(v-if='e.data?.info?.length') {{ e.data.info }}
+
+              //- .px-3.py-3.border-t-2.border-b-2.border-black.bg-orange(
+              //-   :style='{ "height": e.data?.duration ? (e.data?.duration * programHeightMult) + "px" : 70 + "px", "width": (pageWidth / 4) -3 + "px", "margin-top": (e.data?.timeOffset * programHeightMult) + "px" }'
+              //-   :class='{ "bg-purple": ! e.data?.duration }'
+              //- )
+                //- .font-d.border-2.border-darkgreen.bg-green.overflow-hidden.px-3.py-3.hover_border-darkpurple.hover_bg-purple(
+                //-   :style='{ "height": e.data?.duration ? (e.data?.duration * 1.5) + "px" : 70 + "px", "width": (pageWidth / 4) -3 + "px", "margin-top": (e.data?.timeOffset * 1.5) + "px" }'
+                //-   :class='{ "bg-purple": ! e.data?.duration }'
+                //- )
+                //-   .meta.text-sm.mb-1.opacity-50
+                //-     span.start {{ e.data?.hour }}:{{ e.data?.minute }} — 
+                //-     span.end {{ e.data?.endTime }}
+                    
+                //-   span.font-d.text-lg.mr-1 {{ $prismic.asText(e.data?.title) }}
+                //-   span.text-xs.opacity-50 {{ e.data?.type }}
+                  
+                //-   pre(v-if='e.data?.offsite') {{ e.data.offsite }}
+                //-   pre(v-if='e.data?.google_map && e.data?.google_map.link_type !== "Any"') {{ e.data.google_map }}
+                //-   pre(v-if='e.data?.info?.length') {{ e.data.info }}
   
   
     
-  .bottom-spacer.h-64.md_h-72.lg_h-80
+  .bottom-spacer.h-32
               
 </template>
+
+<style lang="scss" scoped>
+.events {
+  // $s: 90px;
+  // $s: 120px;
+  $s: 138px;
+  background-size: $s $s;
+  background-image:
+    // linear-gradient(to right, grey 1px, transparent 1px),
+    linear-gradient(to bottom, #CA3702 1px, transparent 1px);
+}
+.shadow-border {
+  box-shadow: 0 0 0 1.5px black;
+}
+</style>
 
 <script setup>
 definePageMeta({
@@ -220,20 +255,26 @@ datesObjects.forEach((dateObject, i) => {
 // title stuff
 
 const pageWidth = ref(0)
+const buttonWidth = ref(100)
+const programHeightMult = 2.3
+const div = ref(4)
 const titleEl = 'program'
 
-onMounted(() => {
+const resizeHandler = (titleEl) => {
   pageWidth.value = document.getElementById(titleEl).offsetWidth
-  
-  window.addEventListener('resize', () => {
-    pageWidth.value = document.getElementById(titleEl).offsetWidth
-  })
+  buttonWidth.value = pageWidth.value / 10
+  if (buttonWidth.value < 100) buttonWidth.value = 100
+  const tailwindSmBreakpoint = 640
+  if (pageWidth.value < tailwindSmBreakpoint) div.value = 1
+}
+
+onMounted(() => {
+  resizeHandler(titleEl)
+  window.addEventListener('resize', () => resizeHandler(titleEl))
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', () => {
-    pageWidth.value = document.getElementById(titleEl).offsetWidth
-  })
+  window.removeEventListener('resize', () => resizeHandler())
 })
 
 </script>

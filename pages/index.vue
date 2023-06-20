@@ -41,6 +41,17 @@ SeoMeta
   .artists.mb-20.mt-0.md_mt-64.lg_mt-72
     ArtistGrid
     
+  //- program  
+  
+  
+  //- volunteer
+  PageExcerpt(uid='volunteer').mb-32
+  
+  //- mimer
+  PageExcerpt(uid='mimerlaven')
+  
+  //- more?
+    
 </template>
 
 
