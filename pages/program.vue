@@ -31,7 +31,7 @@ SeoMeta(title='Program')
       
           //- h3.font-a.text-2xl.pb-3.text-center.border-b-2.border-darkpurple {{ l }}
           //- h3.font-a.text-2xl.pb-3.text-center.border-b-4.border-black {{ l }}
-          .title.text-2xl.text-center.relative.mb-6.mt-8._md_mt-0.sticky.top-24.md_top-48.z-50.bg-orange
+          .title.text-2xl.text-center.relative.mb-6.mt-8._md_mt-0.sticky.top-24.md_top-48.z-50.Xbg-orange
             UiPageTitle(:width='pageWidth/div') {{ l }}
           
           //- .events.border-darkpurple(
@@ -116,9 +116,11 @@ SeoMeta(title='Program')
 .program-box {
   background-repeat: no-repeat;
   background-size: 0 0;
-  &:hover {
-    background-size: cover;
-    backdrop-filter: blur(2px);
+  @media screen and (min-width: 640px) {
+    &:hover {
+      background-size: cover;
+      backdrop-filter: blur(2px);
+    }
   }
 }
 
