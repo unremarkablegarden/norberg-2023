@@ -36,7 +36,8 @@ SeoMeta(title='Program')
               :style='{ "z-index": 100-j }'
             )
             
-              nuxt-link(:to='"/artist/" + e.slugs[0]')
+              //- nuxt-link(:to='"/artist/" + e.slugs[0]')
+              nuxt-link(:to="e?.data?.artists?.[0]?.artist.slug ? `/artist/${e?.data?.artists?.[0]?.artist.slug}` : `/program`")
                 
                 .font-d.border-2.border-darkgreen.bg-green.overflow-hidden.px-3.py-3.hover_border-darkpurple.hover_bg-purple(
                   :style='{ "height": e.data?.duration ? (e.data?.duration * 1.5) + "px" : 70 + "px", "width": (pageWidth / 4) -3 + "px", "margin-top": (e.data?.timeOffset * 1.5) + "px" }'
@@ -46,6 +47,7 @@ SeoMeta(title='Program')
                     //- pre {{ pageWidth }}
                     span.start {{ e.data?.hour }}:{{ e.data?.minute }} — 
                     span.end {{ e.data?.endTime }}
+                    //- pre {{ e?.data?.artists?.[0]?.artist.slug }}
                     //- span.opacity-40.text-sm.ml-2 &nbsp;({{ e.data?.formattedDuration }})
                     //- div.text-xs
                       //- span {{ e.data?.date }} / 
