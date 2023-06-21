@@ -43,12 +43,10 @@ SeoMeta
     
   //- program  
   
-  
-  //- volunteer
-  PageExcerpt(uid='volunteer').mb-32
-  
-  //- mimer
+  PageExcerpt(uid='about')
+  PageExcerpt(uid='volunteer')
   PageExcerpt(uid='mimerlaven')
+  PageExcerpt(uid='practical-info')
   
   //- more?
     

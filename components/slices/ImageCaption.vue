@@ -6,7 +6,7 @@
       | {{ $prismic.asText(slice.primary.caption) }}
       
   template(v-else)
-    .inner.w-full.md_w-2x3.lg_w-1x2.xl_w-1x3.mx-auto
+    .inner.mx-auto(:class='{ "w-full md_w-2x3 lg_w-1x2 xl_w-1x3": slug !== "press", "w-full md_w-2x3": slug === "press" }')
       .img(:class='slice.slice_label')
         prismic-image(:field='slice.primary.image')
       .text-right.pt-3.font-d.text-xs.md_text-sm.lg_text-normal
@@ -22,6 +22,8 @@ const props = defineProps({
     required: true,
   },
 })
+
+const slug = useRoute().params?.slug?.[0]
 </script>
 
 

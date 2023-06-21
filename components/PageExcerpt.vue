@@ -3,7 +3,7 @@
   //- pre {{ props }}
   //- pre {{ data }}
   //- pre {{  }}
-#page(v-if='data[props.uid] && data[props.uid].data')
+#page(v-if='data[props.uid] && data[props.uid].data').mb-32
   //- pre {{ data[props.uid]?.data?.data }}
   .content
     #title(v-if='data[props.uid]?.data?.data?.title').mb-8.mt-2.md_mt-4.md_mb-12.lg_mb-20.lg_mt-4.xl_mt-10.2xl_mt-16.flex.align-center.justify-center.text-5xl.md_text-6xl.lg_text-7xl.leading-none.w-full.lg_w-11x12.xl_w-9x12.2xl_w-7x12.mx-auto
