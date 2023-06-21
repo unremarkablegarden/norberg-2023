@@ -84,16 +84,16 @@ const pageWidth = ref(0)
 const titleWrapper = 'title'
 
 onMounted(() => {
-  pageWidth.value = document.getElementById(titleWrapper).offsetWidth
+  pageWidth.value = document.getElementById(titleWrapper)?.offsetWidth
   
   window.addEventListener('resize', () => {
-    pageWidth.value = document.getElementById(titleWrapper).offsetWidth
+    pageWidth.value = document.getElementById(titleWrapper)?.offsetWidth
   })
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', () => {
-    pageWidth.value = document.getElementById(titleWrapper).offsetWidth
+    pageWidth.value = document.getElementById(titleWrapper)?.offsetWidth
   })
 })
 

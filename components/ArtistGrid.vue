@@ -2,7 +2,9 @@
 #artist-grid
   .wrapper.-m-2
     .flex.flex-wrap
-      .artist(v-for="(artist, i) in data.artists").w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5
+      .artist(
+        v-for="(artist, i) in data.artists.slice(0, max)"
+      ).w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5
         .pb-2.md_pb-3.xl_p-3.p-2
           //- .p-2
           //- .md_p-4.md_pb-8
@@ -26,7 +28,7 @@
                     //- | {{ artist.data?.type }}
                     | {{ artist.data?.type === 'Performer' ? 'Performance' : artist.data?.type }}
       
-      .artist.see-all-artists.w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5
+      .artist.see-all-artists.w-1x2.md_w-4x12.lg_w-3x12.xl_w-1x5(v-if='max < data.artists.length')
         .p-0.pb-4
           .flex.justify-center.items-center.square
             nuxt-link(to='/all-artists')
@@ -43,6 +45,10 @@ const props = defineProps({
   sort: {
     type: String,
     default: 'date'
+  },
+  max: {
+    type: Number,
+    default: 999
   }
 })
 

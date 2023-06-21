@@ -13,21 +13,19 @@ $green: #30BD55
 $darkgreen: #1F8C4F
 $orange: #FF5701
 
-.page-enter-active,
-.page-leave-active
-  transition: all 0.4s
-
-.page-enter-from,
-.page-leave-to
-  opacity: 0
-  filter: blur(1rem)
-  
 html, body
   background-color: $orange
   line-height: 1.2
 
 body
-  font-family: "A", sans-serif  
+  font-family: "A", sans-serif
+  
+  
+// text selection highlight color $green
+::selection
+  background: $darkpurple
+  color: $orange
+  
     
 .font-a
   font-family: "A", sans-serif

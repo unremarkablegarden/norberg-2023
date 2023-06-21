@@ -1,6 +1,6 @@
 <template lang="pug">
 button(
-  :class='{ "orange-black": type == "orange-black", "trans": type == "trans", "selected": selected == true, "purple-black": type == "purple-black" }'
+  :class='{ "orange-black": type == "orange-black", "trans": type == "trans", "selected": selected == true, "purple-black": type == "purple-black", "disabled": disabled == true, "not-disabled": disabled !== true }'
 )
   .inner.flex.overflow-hidden(:class='{ "h-8": size == "xl", "h-4": size == "sm" }')
     .left.decoration
@@ -16,8 +16,7 @@ const props = defineProps({
   type: String,
   size: String,
   selected: Boolean,
-  // disabled: Boolean,
-  // onClick: Function,
+  disabled: Boolean,
 })
 </script>
 
@@ -34,10 +33,14 @@ const props = defineProps({
 //   transition: all 0.2s ease-out
 //   transform: scale(1.05)
 button
-  transition: all 0.2s ease
-  &:hover
+  &.not-disabled
     transition: all 0.2s ease
-    transform: scale(1.1)
+    &:hover
+      transition: all 0.2s ease
+      transform: scale(1.1)
+      
+  &.disabled
+    cursor: default !important
   .bg-black
     background: #000 !important
   display: inline-block

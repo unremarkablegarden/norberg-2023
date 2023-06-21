@@ -51,7 +51,7 @@ const pageWidth = ref(0)
 const titleEl = 'page'
 
 const resizeHandler = (titleEl) => {
-  pageWidth.value = document.getElementById(titleEl).offsetWidth
+  pageWidth.value = document.getElementById(titleEl)?.offsetWidth
 }
 
 onMounted(() => {

@@ -51,16 +51,16 @@ const pageWidth = ref(0)
 const titleEl = 'artists'
 
 onMounted(() => {
-  pageWidth.value = document.getElementById(titleEl).offsetWidth
+  pageWidth.value = document.getElementById(titleEl)?.offsetWidth
   
   window.addEventListener('resize', () => {
-    pageWidth.value = document.getElementById(titleEl).offsetWidth
+    pageWidth.value = document.getElementById(titleEl)?.offsetWidth
   })
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', () => {
-    pageWidth.value = document.getElementById(titleEl).offsetWidth
+    pageWidth.value = document.getElementById(titleEl)?.offsetWidth
   })
 })
 </script>

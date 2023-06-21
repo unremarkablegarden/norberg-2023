@@ -24,7 +24,7 @@
     .left.lg_mr-6.w-full.md_w-8x12.lg_w-8x12.md_pr-8.lg_pr-16
     
       .flex.mb-6.lg_mb-16.normal-case.scale-75.md_scale-100
-        UiButton(type="trans" size="xl") {{ data?.type === 'Performer' ? 'Performance' : data?.type }}
+        UiButton(type="trans" size="xl" :disabled='true') {{ data?.type === 'Performer' ? 'Performance' : data?.type }}
         //- UiButton(type="trans" size="xl") Date
         //- UiButton(type="trans" size="xl") Time
         //- UiButton(type="trans" size="xl") Tag
