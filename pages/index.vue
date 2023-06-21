@@ -46,7 +46,7 @@ SeoMeta
   PageExcerpt(uid='about')
   PageExcerpt(uid='volunteer')
   PageExcerpt(uid='mimerlaven')
-  PageExcerpt(uid='practical-info')
+  //- PageExcerpt(uid='practical-info')
   
   //- more?
     
