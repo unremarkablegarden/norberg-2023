@@ -39,7 +39,7 @@ SeoMeta
   .spacer(class='h-[130vh] md_h-[61vh] lg_h-[68vh]')
   
   .artists.mb-20.mt-0.md_mt-64.lg_mt-72
-    ArtistGrid(:max='9')
+    ArtistGrid(:max='9' sort='random')
     
   //- program  
   

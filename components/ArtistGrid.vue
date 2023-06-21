@@ -68,6 +68,8 @@ watchEffect(() => {
       if (aName > bName) return 1
       return 0
     })
+  } else if (props.sort === 'random') {
+    data.artists = data.artists.sort(() => Math.random() - 0.5)
   }
 })
 </script>
