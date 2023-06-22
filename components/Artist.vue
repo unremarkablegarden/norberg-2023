@@ -86,8 +86,11 @@ if (last_page === '/all-artists') {
     // xl	1280px	@media (min-width: 1280px) { ... }
     // 2xl	1536px	@media (min-width: 1536px) { ... }
     
-    // container:
-    // .w-full .md_w-12x12 .lg_w-11x12 .xl_w-10x12 .2xl_w-8x12
+    
+    // main padding:
+    // px-4 lg_px-10 2xl_px-16
+    // video column:
+    // right w-full md_w-4x12 lg_w-4x12
     
     // mobile
     @media (max-width: 767px) {
@@ -96,27 +99,23 @@ if (last_page === '/all-artists') {
     }
     // tablet
     @media (min-width: 768px) and (max-width: 1023px) {
-      width: calc((100vw - 2rem) / 2);
-      height: calc( (((100vw - 2rem) / 2) * (9/16)) ); 
+      width: calc( (100vw - 2rem) * (1/3) );
+      height: calc( (100vw - 2rem) * (1/3) * (9/16) );
     }
     // lg
     @media (min-width: 1024px) {
-      // page px-10 (2.5rem)
-      // container 11x12
-      width: calc((100vw - 5rem) * (11/12) * (1/3));
-      height: calc( ((100vw - 5rem) * (11/12) * (1/3)) * (9/16) );
+      width: calc( (100vw - 5rem) * (1/3) );
+      height: calc( (100vw - 5rem) * (1/3) * (9/16) );
+      
     }
     // xl
     @media (min-width: 1280px) {
-      // page px-10 (2.5rem)
-      width: calc((100vw - 5rem) * (1/3) * (10/12));
-      height: calc( ((100vw - 5rem) * (1/3)) * (10/12) * (9/16) );
+      
     }
     // 2xl
     @media (min-width: 1536px) {
-      // page px-16 (4rem)
-      width: calc((100vw - 10rem) * (1/3) * (8/12));
-      height: calc( ((100vw - 10rem) * (1/3)) * (8/12) * (9/16) );
+      width: calc( (100vw - 8rem) * (1/3) );
+      height: calc( (100vw - 8rem) * (1/3) * (9/16) );
     }
   }
 }
