@@ -7,19 +7,19 @@
       <div class="flex justify-between h-5">
         <button
           @click="toggleRadio"
-          class="uppercase left date flex gap-4 max-w-2xl"
+          class="uppercase left date flex gap-4 max-w-full md_max-w-2xl"
         >
           <span v-if="playing" class="flex gap-2">
             <div class="bg-primary w-2 h-5"></div>
             <div class="bg-primary w-2 h-5"></div
           ></span>
           <span v-else>▶</span>
-          <!-- <div
-            class="border-primary border rounded-full flex px-2 items-center h-6 gap-1 w-32"
+          <div
+            class="border-primary border rounded-full flex px-2 items-center justify-center h-6 gap-1 w-24 sm_w-20 mt-[-1px]"
           >
             <div class="h-2 w-2 animate-pulse bg-primary rounded-full"></div>
-            <span class="text-2xs mb-0 mt-1">live on air</span>
-          </div> -->
+            <span class="text-2xs mb-0 mt-1 w-fit">on air</span>
+          </div>
           <Vue3Marquee pauseOnHover="1"
             >Norbergfestival radio&nbsp;—&nbsp;
             <span v-if="data"> {{ data.current_track.title }}</span>
