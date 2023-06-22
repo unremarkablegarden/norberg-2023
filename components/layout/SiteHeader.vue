@@ -1,16 +1,69 @@
-<template lang="pug">
-header.px-4.lg_px-10.2xl_px-16.bg-black.z-30.absolute.w-full.left-0
-  #header.bar-top.uppercase.text-primary.font-d.text-lg.md_text-2xl.leading-7.py-2
-    .flex.justify-between.h-5
-      .left.date
-        | {{ config.dates }}
-      .middle.tickets.text-center
-        nuxt-link(:to='config.tickets.link', target="_blank").hover_underline
-          | {{ config.tickets.title }}
-      .right.location.text-right.hidden.md_block
-        | {{ config.location }}
+<template>
+  <header class="px-4 lg_px-10 2xl_px-16 bg-black z-30 absolute w-full left-0">
+    <div
+      class="bar-top uppercase text-primary font-d text-lg md_text-2xl leading-7 py-2"
+      id="header"
+    >
+      <div class="flex justify-between h-5">
+        <button
+          @click="toggleRadio"
+          class="uppercase left date flex gap-4 max-w-2xl"
+        >
+          <span v-if="playing" class="flex gap-2">
+            <div class="bg-primary w-2 h-5"></div>
+            <div class="bg-primary w-2 h-5"></div
+          ></span>
+          <span v-else>▶</span>
+          <!-- <div
+            class="border-primary border rounded-full flex px-2 items-center h-6 gap-1 w-32"
+          >
+            <div class="h-2 w-2 animate-pulse bg-primary rounded-full"></div>
+            <span class="text-2xs mb-0 mt-1">live on air</span>
+          </div> -->
+          <Vue3Marquee pauseOnHover="1"
+            >Norbergfestival radio&nbsp;—&nbsp;
+            <span v-if="data"> {{ data.current_track.title }}</span>
+            <span v-else> Loading</span>&nbsp;&nbsp;&nbsp;&nbsp;</Vue3Marquee
+          >
+        </button>
+        <nuxt-link to="" class="right location text-right hidden md_block"
+          >More info →</nuxt-link
+        >
+      </div>
+    </div>
+  </header>
 </template>
 
 <script setup>
-const config = useAppConfig()
+import { Vue3Marquee } from "vue3-marquee";
+import "vue3-marquee/dist/style.css";
+let playing = ref(false);
+let radio = ref(null);
+const { pending, data, error, refresh } = await useFetch(
+  "https://public.radio.co/stations/s3699c5e49/status",
+  {
+    lazy: true,
+    server: false,
+  }
+);
+
+setInterval(function () {
+  console.log(`refreshing the radio live player ${new Date().toISOString()}`);
+  refresh(); // will call the 'todos' endpoint, just above
+}, 60 * 1000); // 60 * 1000 milsec
+
+const toggleRadio = () => {
+  if (!playing.value) {
+    radio.value.load();
+    radio.value.play();
+  } else {
+    radio.value.pause();
+  }
+  playing.value = !playing.value;
+};
+
+onMounted(() => {
+  console.log("mounted");
+  radio.value = new Audio("https://streaming.radio.co/s3699c5e49/listen");
+});
 </script>
