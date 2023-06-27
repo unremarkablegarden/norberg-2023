@@ -43,7 +43,7 @@ SeoMeta(title='Program')
               :style='{ "z-index": 100-j }'
             )
             
-              nuxt-link(:to="e?.data?.artists?.[0]?.artist.slug ? `/artist/${e?.data?.artists?.[0]?.artist.slug}` : `/program`")
+              nuxt-link(:to="e?.data?.artists.length < 2 && e?.data?.artists?.[0]?.artist.slug ? `/artist/${e?.data?.artists?.[0]?.artist.slug}` : `/program/${slugify(selectedDay)}`")
                 
                 .program-box.bg-green.hover_bg-purple.px-3.py-3.shadow-border.bg-cover.bg-center(
                   :style='{ "height": ! $device.isMobile && e.data?.duration ? (e.data?.duration * programHeightMult) + "px" : "auto", "width": ((pageWidth) / (div + (div == 1 ? .01 : .02))) + "px", "margin-top": ! $device.isMobile ? (e.data?.timeOffset * programHeightMult) + "px" : "0px", "background-image": "url("+e.data?.artists?.[0]?.artist?.data?.image?.url+")" }'

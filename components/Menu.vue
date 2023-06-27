@@ -34,12 +34,12 @@
             span more
             .text-mediumpurple.pl-1 ++
             
-        .more-menu(v-if='data && data.open_more').absolute.pt-2.w-full.md_w-auto
+        .more-menu(v-if='data && data.open_more').pt-2.md_absolute.w-full.md_w-auto.md_right-0
           .item(
             v-for='(item, i) in data.menu.more' 
             :key='i' 
             :class='{ disabled: ! item.enable }'
-          ).whitespace-nowrap.md_text-left
+          ).whitespace-nowrap
             template(v-if='item?.link?.link_type === "Web"')
               a(:href='parseLink(item.link.url)', v-if='item.enable').hover_text-green {{ item.title }}
             template(v-else)
