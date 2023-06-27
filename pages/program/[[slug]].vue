@@ -43,9 +43,10 @@ SeoMeta(title='Program')
               :style='{ "z-index": 100-j }'
             )
             
-              nuxt-link(:to="e?.data?.artists.length < 2 && e?.data?.artists?.[0]?.artist.slug ? `/artist/${e?.data?.artists?.[0]?.artist.slug}` : `/program/${slugify(selectedDay)}`")
+              //- nuxt-link(:to="e?.data?.artists.length < 2 && e?.data?.artists?.[0]?.artist.slug ? `/artist/${e?.data?.artists?.[0]?.artist.slug}` : `/program/${slugify(selectedDay)}`")
+              div
                 
-                .program-box.bg-green.hover_bg-purple.px-3.py-3.shadow-border.bg-cover.bg-center(
+                .program-box.bg-green.Xhover_bg-purple.px-3.py-3.shadow-border.bg-cover.bg-center(
                   :style='{ "height": ! $device.isMobile && e.data?.duration ? (e.data?.duration * programHeightMult) + "px" : "auto", "width": ((pageWidth) / (div + (div == 1 ? .01 : .02))) + "px", "margin-top": ! $device.isMobile ? (e.data?.timeOffset * programHeightMult) + "px" : "0px", "background-image": "url("+e.data?.artists?.[0]?.artist?.data?.image?.url+")" }'
                   :class='{ "bg-lightgrey": ! e.data?.duration }'
                 )
@@ -55,14 +56,25 @@ SeoMeta(title='Program')
                     span(v-if='!e.data.duration') —Duration undetermined
                     
                   .mr-2
-                    UiTitleProgram(:text='$prismic.asText(e.data?.title)' :duration='e.data?.duration') {{ $prismic.asText(e.data?.title) }}
+                    //- pre {{  e?.data?.artists?.[0].artist }}
+                    template(v-if='e?.data?.artists.length && e?.data?.artists?.[0].artist?.data?.headline?.[0].text')
+                      .artist(v-for='(a, i) in e.data.artists').mb-2
+                        nuxt-link(:to='"/artist/" + a?.artist.slug')
+                          UiTitleProgram(:text='$prismic.asText(a?.artist?.data?.headline)' :duration='e.data?.duration') {{ $prismic.asText(a?.artist?.data?.headline) }}
+                    template(v-else)
+                      //- nuxt-link(:to="e?.data?.artists?.[0]?.artist.slug ? `/artist/${e?.data?.artists?.[0]?.artist.slug}` : `/program/${slugify(selectedDay)}`")
+                      //- pre {{ e.data?.title }}
+                      UiTitleProgram(:text='$prismic.asText(e.data?.title)' :duration='e.data?.duration') {{ $prismic.asText(e.data?.title) }}
+                      
                   
                   div.text-sm.uppercase.mt-1 {{ e.data?.type }}
                   
                   div.text-sm.uppercase.mt-3(v-if='e.data?.offsite') {{ e.data.offsite }}
+                  
                   //- pre(v-if='e.data?.google_map && e.data?.google_map.link_type !== "Any"') {{ e.data.google_map }}
-                  div.text-sm.uppercase.mt-3(v-if='e.data?.info?.length') {{ e.data.info }}
-                  //- pre {{ e.data }}
+                  
+                  div.text-sm.uppercase.mt-3(v-if='e.data?.info?.length') 
+                    prismic-rich-text(:field='e.data.info').rich-text
     
   .bottom-spacer.h-32
               
@@ -95,7 +107,7 @@ const setDay = (date) => {
 
 
 const { data: docs } = await useAsyncData('docs', () => client.getByType('program', 
-{ pageSize: 100, fetchLinks: 'artist.image' }))
+{ pageSize: 100, fetchLinks: ['artist.image', 'artist.headline'] }))
 
 const locations = [
   'Mimer',
@@ -291,4 +303,21 @@ onUnmounted(() => {
   }
 }
 
+</style>
+
+<style lang="sass">
+#program .rich-text
+  font-family: 'D'
+  text-transform: none
+  strong
+    font-family: 'A'
+    background: #000
+    color: #30BC55
+    font-size: 1.1rem
+    display: inline-block
+    padding: 0 0.5rem 0 0.3rem
+    a
+      text-decoration: none
+  p
+    margin-bottom: 0.5rem
 </style>
