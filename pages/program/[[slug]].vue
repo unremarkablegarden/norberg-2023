@@ -59,9 +59,10 @@ SeoMeta(title='Program')
                   
                   div.text-sm.uppercase.mt-1 {{ e.data?.type }}
                   
-                  pre(v-if='e.data?.offsite') {{ e.data.offsite }}
-                  pre(v-if='e.data?.google_map && e.data?.google_map.link_type !== "Any"') {{ e.data.google_map }}
-                  pre(v-if='e.data?.info?.length') {{ e.data.info }}
+                  div.text-sm.uppercase.mt-3(v-if='e.data?.offsite') {{ e.data.offsite }}
+                  //- pre(v-if='e.data?.google_map && e.data?.google_map.link_type !== "Any"') {{ e.data.google_map }}
+                  div.text-sm.uppercase.mt-3(v-if='e.data?.info?.length') {{ e.data.info }}
+                  //- pre {{ e.data }}
     
   .bottom-spacer.h-32
               
@@ -208,8 +209,8 @@ datesObjects.forEach((dateObject, i) => {
 // loop through dateObjects, and for each event, calculate the timeOffset, from the hour and minute, and the duration, as minutes from 12:00, and add it to .timeOffset. treat 00:00 as 24:00
 
 // start day at 12
-// const startHour = 12
-const startHour = 17
+const startHour = 12
+// const startHour = 17
 
 datesObjects.forEach((dateObject, i) => {
   dateObject.locations.forEach((locationObject, i) => {
