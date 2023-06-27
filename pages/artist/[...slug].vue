@@ -33,8 +33,8 @@ watchEffect(() => {
   seo.description = data.doc?.body?.[0]?.text
   let image = data.doc?.image?.url
 
-  image = image.replace(/h=\d+/, 'h=630').replace(/w=\d+/, 'w=1200')
-  image = image.includes('fit=') ? image.replace(/fit=\w+/, 'f=crop') : image + '&fit=crop'
+  image = image?.replace(/h=\d+/, 'h=630').replace(/w=\d+/, 'w=1200')
+  image = image?.includes('fit=') ? image.replace(/fit=\w+/, 'f=crop') : image + '&fit=crop'
   seo.image = image
 })
 </script>
