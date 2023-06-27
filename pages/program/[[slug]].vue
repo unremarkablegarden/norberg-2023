@@ -34,7 +34,7 @@ SeoMeta(title='Program')
             UiPageTitle(:width='pageWidth/div') {{ l }}
           
           .events.border-black.Xmd_border-r.Xmd_border-l.border-t-4.border-b(
-            class='md_h-[1386px]'
+            class='md_h-[2074px]'
           )
 
             .event.md_absolute.z-20(
@@ -46,7 +46,7 @@ SeoMeta(title='Program')
               nuxt-link(:to="e?.data?.artists?.[0]?.artist.slug ? `/artist/${e?.data?.artists?.[0]?.artist.slug}` : `/program`")
                 
                 .program-box.bg-green.hover_bg-purple.px-3.py-3.shadow-border.bg-cover.bg-center(
-                  :style='{ "height": e.data?.duration ? (e.data?.duration * programHeightMult) + "px" : 70 + "px", "width": ((pageWidth) / (div + (div == 1 ? .01 : .02))) + "px", "margin-top": (e.data?.timeOffset * programHeightMult) + "px", "background-image": "url("+e.data?.artists?.[0]?.artist?.data?.image?.url+")" }'
+                  :style='{ "height": ! $device.isMobile && e.data?.duration ? (e.data?.duration * programHeightMult) + "px" : "auto", "width": ((pageWidth) / (div + (div == 1 ? .01 : .02))) + "px", "margin-top": ! $device.isMobile ? (e.data?.timeOffset * programHeightMult) + "px" : "0px", "background-image": "url("+e.data?.artists?.[0]?.artist?.data?.image?.url+")" }'
                   :class='{ "bg-lightgrey": ! e.data?.duration }'
                 )
                   .meta.text-sm.mb-1

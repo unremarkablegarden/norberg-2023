@@ -68,7 +68,8 @@ const props = defineProps({
 .label
   // padding: 0 0.3rem 0 0.3rem
   padding: 0 0.5rem 0 0.3rem
-  width: min-content
+  @media (min-width: 768px)
+    width: min-content
 // .decoration
 //   $sl: 1.4rem
 //   $wl: 0.5rem

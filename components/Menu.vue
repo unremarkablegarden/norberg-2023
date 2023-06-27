@@ -14,12 +14,17 @@
     .left(:class="{ 'w-full md_w-full': !data.more_count, 'w-full md_w-10x12': data.more_count }")
       nav(v-if='data && data.menu')#main.flex.md_justify-between.w-full.flex-wrap
         
-        .item(v-for='(item, i) in data.menu.main' :key='i' :class='{ disabled: ! item.enable }' @click='showMenu = false').whitespace-nowrap.w-full.md_w-auto.text-center.md_text-left
+        .item(
+          v-for='(item, i) in data.menu.main' 
+          :key='i' 
+          :class='{ disabled: ! item.enable }' 
+          @click='showMenu = false'
+        ).whitespace-nowrap.w-full.md_w-auto.text-center.md_text-left
           
           template(v-if='item?.link?.link_type === "Web"')
-            a(:href='parseLink(item.link.url)', v-if='item.enable').hover_text-green {{ item.title }}
+            a(:href='parseLink(item.link.url)').hover_text-green {{ item.title }}
           template(v-else)
-            prismic-link(:field='item.link', v-if='item.enable').hover_text-green {{ item.title }}
+            prismic-link(:field='item.link').hover_text-green {{ item.title }}
     
     .right.md_w-1x12.text-center.md_text-right(v-if='data.more_count')
       nav#more
@@ -28,8 +33,13 @@
             .text-mediumpurple.pr-2 ++
             span more
             .text-mediumpurple.pl-1 ++
+            
         .more-menu(v-if='data && data.open_more').absolute.pt-2.w-full.md_w-auto
-          .item(v-for='(item, i) in data.menu.more' :key='i', :class='{ disabled: ! item.enable }').whitespace-nowrap
+          .item(
+            v-for='(item, i) in data.menu.more' 
+            :key='i' 
+            :class='{ disabled: ! item.enable }'
+          ).whitespace-nowrap.md_text-left
             template(v-if='item?.link?.link_type === "Web"')
               a(:href='parseLink(item.link.url)', v-if='item.enable').hover_text-green {{ item.title }}
             template(v-else)
@@ -81,7 +91,8 @@ $orange: #FF5701
     content: '>'
     padding-left: 0.3rem
   &.disabled
-    opacity: 0.4
+    // opacity: 0.4
+    display: none
 #menu #main .item.close
   margin-top: 3rem
   &:before, &:after
