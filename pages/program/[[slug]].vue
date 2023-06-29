@@ -75,6 +75,12 @@ SeoMeta(title='Program')
                   
                   div.text-sm.uppercase.mt-3(v-if='e.data?.info?.length') 
                     prismic-rich-text(:field='e.data.info').rich-text
+                    
+                  //- pre.text-xs 
+                    | {{ e.data.date }}
+                    | {{ e.data.hour }}
+                    | {{ e.data.minute }}
+                    | {{ e.data.duration }}
     
   .bottom-spacer.h-32
               
