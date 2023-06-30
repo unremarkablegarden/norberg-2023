@@ -77,10 +77,11 @@ SeoMeta(title='Program')
                     prismic-rich-text(:field='e.data.info').rich-text
                     
                   //- pre.text-xs 
-                    | {{ e.data.date }}
-                    | {{ e.data.hour }}
-                    | {{ e.data.minute }}
-                    | {{ e.data.duration }}
+                    //- | {{ e.data.info }}
+                    //- | {{ e.data.date }}
+                    //- | {{ e.data.hour }}
+                    //- | {{ e.data.minute }}
+                    //- | {{ e.data.duration }}
     
   .bottom-spacer.h-32
               
@@ -113,7 +114,7 @@ const setDay = (date) => {
 
 
 const { data: docs } = await useAsyncData('docs', () => client.getByType('program', 
-{ pageSize: 100, fetchLinks: ['artist.image', 'artist.headline'] }))
+{ pageSize: 100, fetchLinks: ['artist.image', 'artist.headline', 'info'] }))
 
 const locations = [
   'Mimer',
