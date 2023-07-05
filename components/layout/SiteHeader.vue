@@ -40,7 +40,7 @@ import "vue3-marquee/dist/style.css";
 let playing = ref(false);
 let radio = ref(null);
 const { pending, data, error, refresh } = await useFetch(
-  "https://public.radio.co/stations/s3699c5e49/status",
+  "https://public.radio.co/stations/s2dab303e6/status",
   {
     lazy: true,
     server: false,
@@ -64,6 +64,6 @@ const toggleRadio = () => {
 
 onMounted(() => {
   console.log("mounted");
-  radio.value = new Audio("https://streaming.radio.co/s3699c5e49/listen");
+  radio.value = new Audio("https://streaming.radio.co/s2dab303e6/listen");
 });
 </script>
