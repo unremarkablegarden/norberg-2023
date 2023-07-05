@@ -27,7 +27,7 @@
           >
         </button>
         <nuxt-link to="" class="right location text-right hidden md_block"
-          >More info →</nuxt-link
+          >Schedule →</nuxt-link
         >
       </div>
     </div>
@@ -64,6 +64,6 @@ const toggleRadio = () => {
 
 onMounted(() => {
   console.log("mounted");
-  radio.value = new Audio("https://streaming.radio.co/s2dab303e6/listen");
+  radio.value = new Audio("https://s4.radio.co/s2dab303e6/listen");
 });
 </script>
