@@ -22,7 +22,7 @@
           </div>
           <Vue3Marquee pauseOnHover="1"
             >Norbergfestival radio
-            <img class="h-8 mx-4" src="/star.png" />
+            <img class="h-8 mx-2 -mt-3" src="/star.png" />
             <span v-if="data"> {{ data.current_track.title }}</span>
             <span v-else> Loading</span>&nbsp;&nbsp;&nbsp;&nbsp;</Vue3Marquee
           >
