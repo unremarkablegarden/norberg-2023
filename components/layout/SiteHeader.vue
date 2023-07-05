@@ -27,7 +27,7 @@
             <span v-else> Loading</span>&nbsp;&nbsp;&nbsp;&nbsp;</Vue3Marquee
           >
         </button>
-        <nuxt-link to="" class="right location text-right hidden md_block"
+        <nuxt-link to="/artist/radio" class="right location text-right hidden md_block"
           >Schedule →</nuxt-link
         >
       </div>
