@@ -21,7 +21,8 @@
             <span class="text-2xs mb-0 mt-1 w-fit">on air</span>
           </div>
           <Vue3Marquee pauseOnHover="1"
-            >Norbergfestival radio&nbsp;—&nbsp;
+            >Norbergfestival radio
+            <img src="/star.png" />
             <span v-if="data"> {{ data.current_track.title }}</span>
             <span v-else> Loading</span>&nbsp;&nbsp;&nbsp;&nbsp;</Vue3Marquee
           >
