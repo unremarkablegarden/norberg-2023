@@ -24,7 +24,9 @@
             >Norbergfestival radio
             <img class="h-8 mx-2 -mt-2" src="/star.png" />
             <span v-if="data"> {{ data.current_track.title }}</span>
-            <span v-else> Loading</span>&nbsp;&nbsp;&nbsp;&nbsp;</Vue3Marquee
+            <span v-else> Loading</span>
+            <img class="h-8 mx-2 -mt-2" src="/star.png" />
+          </Vue3Marquee
           >
         </button>
         <nuxt-link to="/artist/radio" class="right location text-right hidden md_block"
