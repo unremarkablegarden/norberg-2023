@@ -53,7 +53,7 @@ const { pending, data, error, refresh } = await useFetch(
 setInterval(function () {
   console.log(`refreshing the radio live player ${new Date().toISOString()}`);
   refresh(); // will call the 'todos' endpoint, just above
-}, 60 * 1000); // 60 * 1000 milsec
+}, 30 * 1000); // 60 * 1000 milsec
 
 const toggleRadio = () => {
   if (!playing.value) {
