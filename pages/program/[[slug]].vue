@@ -15,14 +15,15 @@ SeoMeta(title='Program')
         v-for='(d, i) in datesObjects' :key='i' 
         @click='setDay(d.date)' 
       )
+          //- pre {{ d.date }}
           //- nuxt-link(:to='"/program/" + slugify(d.date)')
           
-          template(v-if='d.date !== "July 9"')
-            .title.cursor-pointer.mx-3.md_ml-6.md_mr-0
-              img(
-                :src='"/gfx/button_date-tab-"+(i+1)+"-" + (selectedDay === d.date ? "active" : "inactive") + ".svg"'
-                :style='{ "width": buttonWidth + "px" }'
-              )
+          //- template(v-if='d.date !== "July 9"')
+          .title.cursor-pointer.mx-3.md_ml-6.md_mr-0
+            img(
+              :src='"/gfx/button_date-tab-"+(i+1)+"-" + (selectedDay === d.date ? "active" : "inactive") + ".svg"'
+              :style='{ "width": buttonWidth + "px" }'
+            )
 
   .days
     .day(v-for='(d, i) in datesObjects' :key='i', :class='{ "hidden": selectedDay !== d.date }')
@@ -100,6 +101,7 @@ const titleify = (str) => str.split('-').map(word => word[0].toUpperCase() + wor
 
 const selectedDay = ref('July 6')
 
+const router = useRouter()
 const { params } = useRoute()
 const slug = params.slug
 
@@ -108,8 +110,11 @@ else selectedDay.value = 'July 6'
 
 const setDay = (date) => {
   selectedDay.value = date
+  // console.log(date);
   // update URL softly
-  window.history.pushState({}, '', `/program/${slugify(date)}`)
+  // window.history.pushState({}, '', `/program/${slugify(date)}`)
+  // this doesn't for firefox, so we need to do it manually
+  router.push(`/program/${slugify(date)}`)
 }
 
 
@@ -244,9 +249,15 @@ datesObjects.forEach((dateObject, i) => {
   })
 })
 
+// remove datesObject where obj.date !== July 9
+datesObjects = datesObjects.filter(obj => obj.date !== 'July 9')
 
-
-
+// sort datesObjects by obj.date where obj.date is "July 6, 7, 8"
+datesObjects.sort((a, b) => {
+  const aDate = new Date(a.date + ' 2023')
+  const bDate = new Date(b.date + ' 2023')
+  return aDate - bDate
+})
 
 
 // title stuff
