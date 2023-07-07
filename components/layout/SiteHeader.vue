@@ -24,19 +24,16 @@ header.px-4.lg_px-10.2xl_px-16.bg-black.z-30.absolute.w-full.left-0
 <script setup>
 import { Vue3Marquee } from "vue3-marquee"
 import "vue3-marquee/dist/style.css"
+
 let playing = ref(false)
 let radio = ref(null)
+
 const { pending, data, error, refresh } = await useFetch(
   "https://public.radio.co/stations/s2dab303e6/status", {
     lazy: true,
     server: false
   }
 )
-
-setInterval(function () {
-  console.log(`refreshing the radio live player ${new Date().toISOString()}`)
-  refresh() // will call the 'todos' endpoint, just above
-}, 30 * 1000) // 60 * 1000 milsec
 
 const toggleRadio = () => {
   if (!playing.value) {
@@ -48,7 +45,19 @@ const toggleRadio = () => {
   playing.value = !playing.value
 }
 
+let intervalId = null
+
 onMounted(() => {
   radio.value = new Audio("https://s4.radio.co/s2dab303e6/listen")
+  
+  intervalId = window.setInterval(function () {
+    console.log(`refreshing the radio live player ${new Date().toISOString()}`)
+    refresh() // will call the 'todos' endpoint, just above
+  }, 30 * 1000)
 })
+
+onUnmounted(() => {
+  window.clearInterval(intervalId)
+})
+
 </script>
